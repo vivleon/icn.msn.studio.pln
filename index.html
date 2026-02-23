@@ -4,852 +4,1119 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MADISON Builder Studio 사업계획 및 런칭 패키지</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/orioncactus/pretendard/dist/web/static/pretendard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary-color: #2c3e50;
-            --secondary-color: #3498db;
-            --bg-color: #f8f9fa;
-            --text-color: #333;
-            --border-color: #e9ecef;
-            --sidebar-width: 280px;
+            --primary: #0f172a;       /* Deep Slate */
+            --primary-light: #1e293b;
+            --accent: #2563eb;        /* Modern Blue */
+            --accent-hover: #1d4ed8;
+            --bg-body: #f1f5f9;       /* Light Slate */
+            --bg-card: #ffffff;
+            --text-main: #334155;
+            --text-muted: #64748b;
+            --border: #e2e8f0;
+            --danger: #ef4444;
+            --success: #10b981;
+            --warning: #f59e0b;
+            --sidebar-width: 300px;
         }
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-            line-height: 1.6;
-            color: var(--text-color);
-            background-color: var(--bg-color);
+
+        * {
+            box-sizing: border-box;
             margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Pretendard', -apple-system, BlinkMacSystemFont, system-ui, Roboto, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
             display: flex;
         }
-        /* Sidebar Styles */
+
+        /* ---------------- Sidebar ---------------- */
         aside {
             width: var(--sidebar-width);
+            background-color: var(--primary);
+            color: white;
             height: 100vh;
-            background: #fff;
-            border-right: 1px solid var(--border-color);
             position: fixed;
+            top: 0;
+            left: 0;
             overflow-y: auto;
-            padding: 2rem 1rem;
-            box-sizing: border-box;
+            padding: 2rem 1.5rem;
+            z-index: 100;
         }
-        aside h2 {
-            font-size: 1.2rem;
-            color: var(--primary-color);
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--secondary-color);
+
+        aside .logo {
+            font-size: 1.4rem;
+            font-weight: 800;
+            color: white;
+            margin-bottom: 2rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 1px solid rgba(255,255,255,0.1);
+            padding-bottom: 1.5rem;
         }
+
         aside ul {
             list-style: none;
-            padding: 0;
-            margin: 0;
         }
+
         aside li {
-            margin-bottom: 0.8rem;
+            margin-bottom: 0.5rem;
         }
+
         aside a {
+            color: #cbd5e1;
             text-decoration: none;
-            color: #555;
             font-size: 0.95rem;
-            display: block;
-            padding: 0.4rem 0.8rem;
-            border-radius: 4px;
-            transition: all 0.2s;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 10px 14px;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-weight: 500;
         }
-        aside a:hover {
-            background-color: var(--bg-color);
-            color: var(--secondary-color);
-            font-weight: bold;
+
+        aside a:hover, aside a.active {
+            background-color: var(--accent);
+            color: white;
         }
-        /* Main Content Styles */
+
+        /* ---------------- Main Content ---------------- */
         main {
             margin-left: var(--sidebar-width);
             padding: 3rem 4rem;
-            max-width: 1000px;
-            background: #fff;
-            min-height: 100vh;
-            box-shadow: 0 0 20px rgba(0,0,0,0.02);
+            width: calc(100% - var(--sidebar-width));
+            max-width: 1200px;
         }
+
+        section {
+            background: var(--bg-card);
+            border-radius: 16px;
+            padding: 3rem;
+            margin-bottom: 3rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+            border: 1px solid var(--border);
+            scroll-margin-top: 2rem;
+        }
+
         h1 {
-            color: var(--primary-color);
             font-size: 2.2rem;
-            border-bottom: 3px solid var(--primary-color);
-            padding-bottom: 1rem;
-            margin-bottom: 2rem;
-        }
-        h2 {
-            color: var(--primary-color);
-            margin-top: 3rem;
-            border-bottom: 1px solid var(--border-color);
-            padding-bottom: 0.5rem;
-        }
-        h3 {
-            color: var(--secondary-color);
-            margin-top: 2rem;
-        }
-        p, li {
-            font-size: 1.05rem;
+            font-weight: 800;
+            color: var(--primary);
             margin-bottom: 1rem;
-            color: #444;
+            line-height: 1.3;
         }
-        .image-placeholder {
-            background: #eef2f5;
-            border: 2px dashed #bdc3c7;
-            padding: 2rem;
-            text-align: center;
-            color: #7f8c8d;
-            border-radius: 8px;
-            margin: 1.5rem 0;
-            font-style: italic;
+
+        h2 {
+            font-size: 1.6rem;
+            color: var(--primary);
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 0.8rem;
+            margin-bottom: 1.5rem;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
+
+        h3 {
+            font-size: 1.25rem;
+            color: var(--accent);
+            margin: 2rem 0 1rem 0;
+            font-weight: 700;
+        }
+
+        h4 {
+            font-size: 1.1rem;
+            color: var(--primary-light);
+            margin: 1.5rem 0 0.8rem 0;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 1.2rem;
+            font-size: 1.05rem;
+            color: #475569;
+        }
+
+        ul, ol {
+            margin-bottom: 1.2rem;
+            padding-left: 1.5rem;
+            color: #475569;
+        }
+
+        li {
+            margin-bottom: 0.5rem;
+        }
+
+        /* ---------------- Citations (이쁘게 디자인된 주석) ---------------- */
+        .cite-badge {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            background-color: #e0e7ff;
+            color: var(--accent);
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 2px 6px;
+            border-radius: 12px;
+            margin-left: 4px;
+            text-decoration: none;
+            vertical-align: super;
+            transition: all 0.2s;
+            border: 1px solid #c7d2fe;
+        }
+
+        .cite-badge:hover {
+            background-color: var(--accent);
+            color: white;
+            transform: translateY(-2px);
+        }
+
+        /* ---------------- Tables ---------------- */
+        .table-container {
+            overflow-x: auto;
+            margin: 2rem 0;
+            border-radius: 12px;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            border: 1px solid var(--border);
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
-            margin: 1.5rem 0;
-            font-size: 0.95rem;
-        }
-        th, td {
-            border: 1px solid var(--border-color);
-            padding: 12px;
+            background: white;
             text-align: left;
         }
+
+        th, td {
+            padding: 1rem;
+            border-bottom: 1px solid var(--border);
+        }
+
         th {
-            background-color: var(--primary-color);
+            background-color: var(--primary-light);
             color: white;
+            font-weight: 600;
+            white-space: nowrap;
         }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
         tr:nth-child(even) {
-            background-color: #f8f9fa;
+            background-color: #f8fafc;
         }
-        blockquote {
-            background: #f1f8ff;
-            border-left: 4px solid var(--secondary-color);
-            padding: 1rem 1.5rem;
+
+        tr:hover td {
+            background-color: #f1f5f9;
+        }
+
+        /* ---------------- UI Components (실체화된 디자인 요소) ---------------- */
+        .callout {
+            background: #eff6ff;
+            border-left: 4px solid var(--accent);
+            padding: 1.5rem;
+            border-radius: 0 12px 12px 0;
             margin: 1.5rem 0;
-            border-radius: 0 8px 8px 0;
         }
-        code {
-            background: #f4f4f4;
-            padding: 0.2rem 0.4rem;
-            border-radius: 3px;
-            font-family: monospace;
+
+        .callout.warning {
+            background: #fffbeb;
+            border-left-color: var(--warning);
         }
-        .pre-block {
-            background: #2d2d2d;
-            color: #ccc;
+
+        .callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        .metrics-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin: 2rem 0;
+        }
+
+        .metric-card {
+            background: #f8fafc;
+            border: 1px solid var(--border);
+            padding: 1.5rem;
+            border-radius: 12px;
+            text-align: center;
+        }
+
+        .metric-value {
+            font-size: 1.8rem;
+            font-weight: 800;
+            color: var(--accent);
+            margin-top: 0.5rem;
+        }
+
+        .metric-label {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            font-weight: 600;
+        }
+
+        /* ---------------- Wireframe Mockup (랜딩페이지 실체화) ---------------- */
+        .mockup-window {
+            border: 2px solid var(--border);
+            border-radius: 12px;
+            overflow: hidden;
+            margin: 2rem 0;
+            background: #fff;
+            box-shadow: 0 10px 15px -3px rgba(0,0,0,0.1);
+        }
+
+        .mockup-header {
+            background: #f1f5f9;
+            padding: 10px 15px;
+            display: flex;
+            gap: 8px;
+            border-bottom: 1px solid var(--border);
+        }
+
+        .mockup-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #cbd5e1;
+        }
+        .mockup-dot:nth-child(1) { background: #ff5f56; }
+        .mockup-dot:nth-child(2) { background: #ffbd2e; }
+        .mockup-dot:nth-child(3) { background: #27c93f; }
+
+        .mockup-body {
+            padding: 0;
+        }
+
+        .mockup-hero {
+            background: linear-gradient(135deg, var(--primary), var(--primary-light));
+            color: white;
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+
+        .mockup-hero h1 {
+            color: white;
+            font-size: 2rem;
+            border: none;
+            margin-bottom: 1rem;
+        }
+
+        .mockup-features {
+            display: grid;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 1rem;
+            padding: 2rem;
+            background: #fff;
+            text-align: center;
+        }
+        
+        .mockup-feature-card {
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            border-radius: 8px;
+            background: #f8fafc;
+        }
+
+        /* ---------------- Document Templates ---------------- */
+        .template-box {
+            background: #1e293b;
+            color: #e2e8f0;
             padding: 1.5rem;
             border-radius: 8px;
-            overflow-x: auto;
             font-family: 'Courier New', Courier, monospace;
-            margin: 1rem 0;
-            white-space: pre-wrap;
+            font-size: 0.95rem;
+            margin: 1rem 0 2rem 0;
+            overflow-x: auto;
+            position: relative;
         }
-        cite {
-            font-size: 0.85rem;
-            color: #888;
-            word-break: break-all;
+
+        .template-box::before {
+            content: "TEMPLATE";
+            position: absolute;
+            top: 0;
+            right: 0;
+            background: #334155;
+            color: #94a3b8;
+            font-size: 0.7rem;
+            padding: 4px 8px;
+            border-bottom-left-radius: 8px;
+            font-family: sans-serif;
+            font-weight: bold;
         }
-        @media (max-width: 900px) {
+
+        /* ---------------- Download Buttons ---------------- */
+        .btn-download {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            background: white;
+            border: 1px solid var(--border);
+            padding: 10px 20px;
+            border-radius: 8px;
+            color: var(--text-main);
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.2s;
+            margin-right: 10px;
+            margin-bottom: 10px;
+        }
+        .btn-download:hover {
+            border-color: var(--accent);
+            color: var(--accent);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+        /* ---------------- Timeline for schedules ---------------- */
+        .timeline-list {
+            border-left: 2px solid var(--accent);
+            padding-left: 1.5rem;
+            margin: 1.5rem 0;
+            list-style: none;
+        }
+        .timeline-list li {
+            position: relative;
+            margin-bottom: 1rem;
+        }
+        .timeline-list li::before {
+            content: "";
+            position: absolute;
+            left: -1.85rem;
+            top: 0.4rem;
+            width: 12px;
+            height: 12px;
+            background: white;
+            border: 2px solid var(--accent);
+            border-radius: 50%;
+        }
+        .time-badge {
+            font-weight: 700;
+            color: var(--accent);
+            margin-right: 8px;
+            font-family: monospace;
+            background: #eff6ff;
+            padding: 2px 6px;
+            border-radius: 4px;
+        }
+
+        @media (max-width: 1024px) {
             body { flex-direction: column; }
-            aside { width: 100%; height: auto; position: static; border-right: none; border-bottom: 1px solid var(--border-color); padding: 1rem; }
-            main { margin-left: 0; padding: 1.5rem; }
+            aside { width: 100%; height: auto; position: static; padding: 1.5rem; }
+            aside ul { display: flex; flex-wrap: wrap; gap: 10px; }
+            aside li { margin: 0; }
+            main { margin-left: 0; width: 100%; padding: 2rem; }
+            .mockup-features { grid-template-columns: 1fr; }
         }
     </style>
-    <script type="module">
-        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
-        mermaid.initialize({ startOnLoad: true, theme: 'default' });
-    </script>
 </head>
 <body>
 
     <aside>
-        <h2>목차</h2>
+        <div class="logo">
+            <i class="fa-solid fa-layer-group"></i> MADISON Studio
+        </div>
         <nav>
             <ul>
-                <li><a href="#summary">Executive summary</a></li>
-                <li><a href="#legal">법적 구조와 등록 전략</a></li>
-                <li><a href="#market">송도 1공구 시장과 경쟁자 분석</a></li>
-                <li><a href="#product">제품 라인업과 커리큘럼 매트릭스</a></li>
-                <li><a href="#finance">재무 모델과 좌석 기반 시뮬레이션</a></li>
-                <li><a href="#operation">운영·스태핑·품질관리</a></li>
-                <li><a href="#brand">브랜드·런칭·세일즈·결제</a></li>
-                <li><a href="#risk">리스크 매트릭스, 실행 로드맵, 부록</a></li>
-                <li><a href="#sources">출처 목록(핵심 근거)</a></li>
+                <li><a href="#summary"><i class="fa-solid fa-chart-pie"></i> Executive summary</a></li>
+                <li><a href="#legal"><i class="fa-solid fa-scale-balanced"></i> 법적 구조와 등록 전략</a></li>
+                <li><a href="#market"><i class="fa-solid fa-magnifying-glass-chart"></i> 시장과 경쟁자 분석</a></li>
+                <li><a href="#product"><i class="fa-solid fa-box-open"></i> 라인업과 커리큘럼</a></li>
+                <li><a href="#finance"><i class="fa-solid fa-calculator"></i> 재무 모델 시뮬레이션</a></li>
+                <li><a href="#operation"><i class="fa-solid fa-gears"></i> 운영·스태핑·품질관리</a></li>
+                <li><a href="#brand"><i class="fa-solid fa-rocket"></i> 런칭·세일즈·결제</a></li>
+                <li><a href="#risk"><i class="fa-solid fa-shield-halved"></i> 리스크 매트릭스 및 로드맵</a></li>
+                <li><a href="#sources"><i class="fa-solid fa-book-bookmark"></i> 출처 목록 (근거)</a></li>
             </ul>
         </nav>
     </aside>
 
     <main>
-        [cite_start]<h1>송도 1공구 오피스텔 기반 MADISON Builder Studio 사업계획 및 런칭 패키지 [cite: 1]</h1>
+        <h1 style="border:none; margin-bottom:0.5rem; font-size:2.5rem;">송도 1공구 오피스텔 기반 MADISON Builder Studio</h1>
+        <p style="font-size:1.2rem; color:var(--text-muted); margin-bottom:3rem;">사업계획 및 런칭 패키지</p>
 
         <section id="summary">
-            [cite_start]<h2>Executive summary [cite: 2]</h2>
-            [cite_start]<p>본 문서는 송도 1공구 오피스텔에서 소규모 오프라인 제작형 스튜디오(“AI Builder Studio”) 를 운영하되, 등록 ‘학원(학원법상 학원)’으로 분류될 리스크를 구조적으로 낮추고 , 동시에 초기 30~90일 내 현금흐름을 빠르게 만드는 실행형 사업 패키지입니다. [cite: 3]</p>
+            <h2><i class="fa-solid fa-chart-pie"></i> Executive summary</h2>
             
-            <div class="image-placeholder">
-                            </div>
-
-            [cite_start]<p>핵심 제약(대표는 PM/프로듀서로서 코딩 비개입, 성인 BYOD, 키즈는 단기/캠프형, 저CAPEX, 리뷰 기반 초기 마케팅)을 전제로 설계합니다. [cite: 4]</p>
-            <p>가장 중요한 컴플라이언스 결론은 다음입니다. [cite_start]학원법상 “학원”은 동시간 10명 이상 또는 30일 이상의 교습과정(반복으로 30일 이상 포함) , 30일 이상 학습장소 제공 등 요건 충족 시 해당될 수 있습니다. [cite: 5] 따라서 좌석(동시간 인원)·기간(30일 미만)·상품형태(‘학습장소 제공’ 금지)·외부 문구(학원/교습소 톤 회피) 가 운영의 핵심 KPI가 됩니다. [cite_start][1] [cite: 6]</p>
-            <p>송도 관점에서 수요는 “성인 업스킬(업무자동화/생산성)”과 “부모-키즈(게임 제작/창의)”가 시간대별로 공존합니다. [cite_start]송도 인구는 2025-12-31 기준 230,570명 으로 공시되어 있으며, IFEZ 전체 인구는 483,771명입니다. [cite: 7] [cite_start][2] 또한 인천경제자유구역청[3] 보도자료 기준 IFEZ 내 사업체 수는 3,860개 , 고용은 122,832명 (2024년 말 기준 조사)으로, 직장인 기반 “퇴근 후 2~3시간” 상품의 TAM이 탄탄합니다. [cite: 8] [cite_start][4] [cite: 9]</p>
-            [cite_start]<p>가격은 국내 벤치마크 범위 내에서 “소수정예 오프라인 + 결과물(배포/운영)” 프리미엄을 반영하여 고정가(Fixed price) 로 표준화합니다. [cite: 10] 예를 들어 패스트캠퍼스[5] 오프라인 5시간 원데이(노트북 지참) 판매가가 199,000원 사례로 확인됩니다. [cite_start][6] [cite: 11]</p>
-            [cite_start]<p>재무적으로는 좌석 8석, 월 고정비(임대료/관리비/통신/마케팅/소모품 등) 250만원 가정 시, 첫 달 “기준” 시나리오에서 매출 약 802.5만원, 영업이익(대표 인건비·세금 제외) 약 371.8만원까지가 현실적인 목표치입니다(본 보고서 제공 시뮬레이션). [cite: 12] [cite_start]반면 보수 시나리오에서는 규모의 경제가 작동하지 않아 적자가 발생할 수 있으므로, 런칭 전에 ‘유료 체험→원데이→2주 스프린트’ 전환 파이프라인을 촘촘히 설계 해 좌석 점유율(Occupancy)을 확보하는 것이 핵심입니다. [cite: 13]</p>
-            [cite_start]<p>다운로드 가능한 실행 패키지(CSV/시나리오/랜딩 와이어프레임/차트)는 보고서 본문에 포함합니다. [cite: 14]</p>
+            <div class="callout">
+                <p>본 문서는 송도 1공구 오피스텔에서 <strong>소규모 오프라인 제작형 스튜디오(“AI Builder Studio”)</strong>를 운영하되, <strong>등록 ‘학원(학원법상 학원)’으로 분류될 리스크를 구조적으로 낮추고</strong>, 동시에 <strong>초기 30~90일 내 현금흐름을 빠르게 만드는</strong> 실행형 사업 패키지입니다.</p>
+            </div>
+            
+            <p>핵심 제약(대표는 PM/프로듀서로서 코딩 비개입, 성인 BYOD, 키즈는 단기/캠프형, 저CAPEX, 리뷰 기반 초기 마케팅)을 전제로 설계합니다.</p>
+            
+            [cite_start]<p>가장 중요한 컴플라이언스 결론은 다음입니다. 학원법상 “학원”은 <strong>동시간 10명 이상</strong> 또는 <strong>30일 이상의 교습과정(반복으로 30일 이상 포함)</strong>, <strong>30일 이상 학습장소 제공</strong> 등 요건 충족 시 해당될 수 있습니다. 따라서 <strong>좌석(동시간 인원)·기간(30일 미만)·상품형태(‘학습장소 제공’ 금지)·외부 문구(학원/교습소 톤 회피)</strong>가 운영의 핵심 KPI가 됩니다. <a href="#src-1" class="cite-badge" title="학원의 설립ㆍ운영 및 과외교습">[cite: 1]</a></p>
+            
+            <p>송도 관점에서 수요는 “성인 업스킬(업무자동화/생산성)”과 “부모-키즈(게임 제작/창의)”가 시간대별로 공존합니다. 송도 인구는 2025-12-31 기준 <strong>230,570명</strong>으로 공시되어 있으며, IFEZ 전체 인구는 483,771명입니다. [cite_start]<a href="#src-2" class="cite-badge">[cite: 2][cite_start]</a> 또한 인천경제자유구역청<a href="#src-3" class="cite-badge">[cite: 3]</a> 보도자료 기준 IFEZ 내 사업체 수는 <strong>3,860개</strong>, 고용은 <strong>122,832명</strong>(2024년 말 기준 조사)으로, 직장인 기반 “퇴근 후 2~3시간” 상품의 TAM이 탄탄합니다. [cite_start]<a href="#src-4" class="cite-badge">[cite: 4]</a></p>
+            
+            <p>가격은 국내 벤치마크 범위 내에서 “소수정예 오프라인 + 결과물(배포/운영)” 프리미엄을 반영하여 <strong>고정가(Fixed price)</strong>로 표준화합니다. [cite_start]예를 들어 패스트캠퍼스<a href="#src-5" class="cite-badge">[cite: 5]</a> 오프라인 5시간 원데이(노트북 지참) 판매가가 <strong>199,000원</strong> 사례로 확인됩니다. [cite_start]<a href="#src-6" class="cite-badge">[cite: 6]</a></p>
+            
+            <p>재무적으로는 좌석 8석, 월 고정비(임대료/관리비/통신/마케팅/소모품 등) 250만원 가정 시, 첫 달 “기준” 시나리오에서 매출 약 802.5만원, 영업이익(대표 인건비·세금 제외) 약 371.8만원까지가 현실적인 목표치입니다(본 보고서 제공 시뮬레이션). 반면 보수 시나리오에서는 규모의 경제가 작동하지 않아 적자가 발생할 수 있으므로, <strong>런칭 전에 ‘유료 체험→원데이→2주 스프린트’ 전환 파이프라인을 촘촘히 설계</strong>해 좌석 점유율(Occupancy)을 확보하는 것이 핵심입니다.</p>
+            
+            <p>다운로드 가능한 실행 패키지(CSV/시나리오/랜딩 와이어프레임/차트)는 보고서 본문에 포함합니다.</p>
         </section>
 
         <section id="legal">
-            [cite_start]<h2>법적 구조와 등록 전략 [cite: 15]</h2>
+            <h2><i class="fa-solid fa-scale-balanced"></i> 법적 구조와 등록 전략</h2>
             
-            [cite_start]<h3>학원 분류 리스크의 핵심 요건과 회피 원칙 [cite: 16]</h3>
-            [cite_start]<p>생활법령/법령 요약에 따르면 학원은 (i) 동시간 10명 이상(또는 불특정 다수) 에게 (ii) 30일 이상의 교습과정(반복으로 30일 이상 포함) 에 따라 교습(원격 포함)하거나, (iii) 30일 이상 학습장소로 제공되는 시설 을 의미합니다. [cite: 17] [cite_start][1] [cite: 18]</p>
-            [cite_start]<p>이를 “운영 SOP”로 전환하면 다음 4대 가드레일이 최우선입니다. [cite: 19]</p>
+            <h3>학원 분류 리스크의 핵심 요건과 회피 원칙</h3>
+            <p>생활법령/법령 요약에 따르면 학원은 (i) <strong>동시간 10명 이상(또는 불특정 다수)</strong>에게 (ii) <strong>30일 이상의 교습과정(반복으로 30일 이상 포함)</strong>에 따라 교습(원격 포함)하거나, (iii) <strong>30일 이상 학습장소로 제공되는 시설</strong>을 의미합니다. [cite_start]<a href="#src-1" class="cite-badge">[cite: 1]</a></p>
+            <p>이를 “운영 SOP”로 전환하면 다음 4대 가드레일이 최우선입니다.</p>
             
-            <table>
-                <thead>
-                    <tr>
-                        [cite_start]<th>리스크 트리거 [cite: 20]</th>
-                        [cite_start]<th>리스크가 커지는 운영 [cite: 20]</th>
-                        [cite_start]<th>권장 SOP(안전형) [cite: 20]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        [cite_start]<td>동시간 인원 [cite: 20]</td>
-                        [cite_start]<td>10명 이상 동시 진행 [cite: 20]</td>
-                        [cite_start]<td>"좌석 8석 고정 (정원 9 이하로 실수 방지) [7]" [cite: 20]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>30일 이상 교습과정 [cite: 20]</td>
-                        [cite_start]<td>"주1회 정규반, 월 단위 정규과정" [cite: 20]</td>
-                        [cite_start]<td>"원데이/2일/2주(30일 미만) 단절형 상품으로만 판매 [1]" [cite: 20]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>학습장소 제공 [cite: 20]</td>
-                        [cite_start]<td>월 멤버십 = 상시 공간 이용(스터디카페형) [cite: 20]</td>
-                        [cite_start]<td>"“멤버십”은 예약형 클리닉/리뷰 패스 로 한정, 공간 상시 제공 금지 [7]" [cite: 20]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>‘학원처럼 보이는’ 외부 문구 [cite: 20]</td>
-                        [cite_start]<td>반/수강/수료/정규과정/학원 [cite: 20]</td>
-                        [cite_start]<td>“워크숍/스프린트/프로젝트 컨설팅/빌드 세션” 표준 문구 [cite: 20]</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>리스크 트리거</th>
+                            <th>리스크가 커지는 운영</th>
+                            <th>권장 SOP(안전형)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>동시간 인원</td>
+                            <td>10명 이상 동시 진행</td>
+                            [cite_start]<td><strong>좌석 8석 고정</strong> (정원 9 이하로 실수 방지) <a href="#src-7" class="cite-badge">[cite: 7]</a></td>
+                        </tr>
+                        <tr>
+                            <td>30일 이상 교습과정</td>
+                            <td>주1회 정규반, 월 단위 정규과정</td>
+                            [cite_start]<td><strong>원데이/2일/2주(30일 미만)</strong> 단절형 상품으로만 판매 <a href="#src-1" class="cite-badge">[cite: 1]</a></td>
+                        </tr>
+                        <tr>
+                            <td>학습장소 제공</td>
+                            <td>월 멤버십 = 상시 공간 이용(스터디카페형)</td>
+                            [cite_start]<td><strong>“멤버십”은 예약형 클리닉/리뷰 패스</strong>로 한정, 공간 상시 제공 금지 <a href="#src-7" class="cite-badge">[cite: 7]</a></td>
+                        </tr>
+                        <tr>
+                            <td>‘학원처럼 보이는’ 외부 문구</td>
+                            <td>반/수강/수료/정규과정/학원</td>
+                            <td>“워크숍/스프린트/프로젝트 컨설팅/빌드 세션” 표준 문구</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
             
-            [cite_start]<p>전제상 “키즈는 단기/캠프형”이므로, 키즈 영역은 특히 정규반 반복(30일 누적) 형태로 오인될 구조를 제거 해야 합니다. [cite: 21] 또한 “멤버십”은 학원 리스크뿐 아니라 스터디카페/독서실형으로 오인될 수 있으므로 “좌석 제공이 아닌, 결과물 리뷰/문제 해결 서비스”로 고정합니다. [cite_start][8] [cite: 22]</p>
+            <p>전제상 “키즈는 단기/캠프형”이므로, 키즈 영역은 특히 <strong>정규반 반복(30일 누적) 형태로 오인될 구조를 제거</strong>해야 합니다. 또한 “멤버십”은 학원 리스크뿐 아니라 스터디카페/독서실형으로 오인될 수 있으므로 “좌석 제공이 아닌, 결과물 리뷰/문제 해결 서비스”로 고정합니다. [cite_start]<a href="#src-8" class="cite-badge">[cite: 8]</a></p>
 
-            [cite_start]<h3>운영 형태 선택지 비교: 개인과외, 컨설팅/서비스, 프리랜서 [cite: 23]</h3>
-            <p>송도(연수구)는 관할 교육지원청이 인천광역시동부교육지원청[9]이며(연수구 관할), 교육지원청 관할구역 표에서 확인됩니다. [cite_start][10] [cite: 24]</p>
-            [cite_start]<p>선택지 비교는 아래와 같습니다. [cite: 25]</p>
+            <h3>운영 형태 선택지 비교: 개인과외, 컨설팅/서비스, 프리랜서</h3>
+            [cite_start]<p>송도(연수구)는 관할 교육지원청이 인천광역시동부교육지원청<a href="#src-9" class="cite-badge">[cite: 9]</a>이며(연수구 관할), 교육지원청 관할구역 표에서 확인됩니다. [cite_start]<a href="#src-10" class="cite-badge">[cite: 10]</a></p>
+            <p>선택지 비교는 아래와 같습니다.</p>
             <ul>
-                [cite_start]<li>개인과외교습자(교육청 신고) - 장점: 신고 체계가 명확하고 교육업 프레임에 맞습니다. [cite: 26]</li>
-                [cite_start]<li>- 구조적 한계: 인천 북부교육지원청 안내에서는 개인과외교습자 신고대상을 “아파트/단독/공동주택에서 거주하며 교습하려는 자”로 제시하고, 같은 시간 10명 이상·30일 이상이면 학원 등록이 필요하다고 경고합니다. [cite: 27] [cite_start][11] 또 다른 지역 교육지원청의 준수사항에서도 오피스텔·근린생활시설은 개인과외교습 불가 로 안내되는 사례가 있어, 오피스텔 기반 모델에 구조적으로 불리합니다(지역별 세부 해석은 상이할 수 있으므로 관할 교육지원청 확인 필요). [cite: 28]</li>
-                [cite_start]<li>[12] - 결론: “오피스텔 + 스튜디오형 + 인력(보조 멘토) 활용”이라는 목표와 충돌 가능성이 높아 추천 우선순위는 낮음 입니다. [cite: 29]</li>
-                [cite_start]<li>컨설팅/지식서비스업(사업자 등록) - 장점: 오피스텔을 사업장으로 설정해 “프로젝트 제작/자문/워크숍” 형태로 운영하기가 상대적으로 자연스럽습니다. [cite: 30] [cite_start]사업자는 사업장마다 사업 개시일부터 20일 이내 사업자등록 이 원칙이며, 개시 전 신청도 가능하다는 국세청 안내가 명확합니다. [cite: 31]</li>
-                [cite_start]<li>[13] - 핵심 리스크: “컨설팅”이라도 실제 운영이 학원 정의(10명·30일·학습장소 제공)에 들어가면 단속/민원 리스크가 발생할 수 있으므로, 앞서 제시한 SOP 가드레일이 필수입니다. [cite: 32]</li>
-                [cite_start]<li>[1] - 결론: 본 사업목표(저CAPEX, 소규모 오프라인, 다상품 운영)에 가장 정합. [cite: 33]</li>
-                [cite_start]<li>프리랜서(강연/자문 단발) - 장점: 초기에는 B2B 단발 파일럿(기업 워크숍/특강)을 “기타소득 원천징수”로 처리할 여지가 있어 실험 비용이 낮습니다. [cite: 34]</li>
-                [cite_start]<li>- 근거: 국세청은 기타소득 지급액이 일정 수준을 초과하는 경우 “지급액×8.8%(지방세 포함)” 원천징수 적용 예시를 제시합니다. [cite: 35]</li>
-                <li>[14] - 한계: B2C 유료 워크숍을 반복하면 ‘계속적·반복적 사업’ 판단 가능성이 커지므로, 최단기 매출 확장에는 사업자 모델이 더 적합합니다. [cite_start][13] [cite: 36]</li>
+                <li><strong>개인과외교습자(교육청 신고)</strong>
+                    <ul>
+                        <li>장점: 신고 체계가 명확하고 교육업 프레임에 맞습니다.</li>
+                        <li>구조적 한계: 인천 북부교육지원청 안내에서는 개인과외교습자 신고대상을 “아파트/단독/공동주택에서 거주하며 교습하려는 자”로 제시하고, 같은 시간 10명 이상·30일 이상이면 학원 등록이 필요하다고 경고합니다. [cite_start]<a href="#src-11" class="cite-badge">[cite: 11]</a> 또 다른 지역 교육지원청의 준수사항에서도 <strong>오피스텔·근린생활시설은 개인과외교습 불가</strong>로 안내되는 사례가 있어, 오피스텔 기반 모델에 구조적으로 불리합니다(지역별 세부 해석은 상이할 수 있으므로 관할 교육지원청 확인 필요). [cite_start]<a href="#src-12" class="cite-badge">[cite: 12]</a></li>
+                        <li>결론: “오피스텔 + 스튜디오형 + 인력(보조 멘토) 활용”이라는 목표와 충돌 가능성이 높아 <strong>추천 우선순위는 낮음</strong>입니다.</li>
+                    </ul>
+                </li>
+                <li><strong>컨설팅/지식서비스업(사업자 등록)</strong>
+                    <ul>
+                        <li>장점: 오피스텔을 사업장으로 설정해 “프로젝트 제작/자문/워크숍” 형태로 운영하기가 상대적으로 자연스럽습니다. 사업자는 사업장마다 <strong>사업 개시일부터 20일 이내 사업자등록</strong>이 원칙이며, 개시 전 신청도 가능하다는 국세청 안내가 명확합니다. [cite_start]<a href="#src-13" class="cite-badge">[cite: 13]</a></li>
+                        <li>핵심 리스크: “컨설팅”이라도 실제 운영이 학원 정의(10명·30일·학습장소 제공)에 들어가면 단속/민원 리스크가 발생할 수 있으므로, 앞서 제시한 SOP 가드레일이 필수입니다. [cite_start]<a href="#src-1" class="cite-badge">[cite: 1]</a></li>
+                        <li>결론: 본 사업목표(저CAPEX, 소규모 오프라인, 다상품 운영)에 <strong>가장 정합</strong>.</li>
+                    </ul>
+                </li>
+                <li><strong>프리랜서(강연/자문 단발)</strong>
+                    <ul>
+                        <li>장점: 초기에는 B2B 단발 파일럿(기업 워크숍/특강)을 “기타소득 원천징수”로 처리할 여지가 있어 실험 비용이 낮습니다.</li>
+                        <li>근거: 국세청은 기타소득 지급액이 일정 수준을 초과하는 경우 “지급액×8.8%(지방세 포함)” 원천징수 적용 예시를 제시합니다. [cite_start]<a href="#src-14" class="cite-badge">[cite: 14]</a></li>
+                        <li>한계: B2C 유료 워크숍을 반복하면 ‘계속적·반복적 사업’ 판단 가능성이 커지므로, 최단기 매출 확장에는 사업자 모델이 더 적합합니다. [cite_start]<a href="#src-13" class="cite-badge">[cite: 13]</a></li>
+                    </ul>
+                </li>
             </ul>
 
-            [cite_start]<h3>세무·VAT·증빙 실무 [cite: 37]</h3>
+            <h3>세무·VAT·증빙 실무</h3>
             <ul>
-                [cite_start]<li>부가가치세(간이/일반) : 국세청은 일반과세자(연 매출 10,400만원 이상)와 간이과세자(10,400만원 미만) 기준 및 산식을 안내합니다. [cite: 38] [15] “교육”이 아니라 “서비스/컨설팅” 프레임이라도 과세 가능성이 높으므로, 가격표는 초기에 “VAT 포함(소비자)”과 “공급가+VAT(기업)”을 분리해 운영하는 편이 계약·정산 효율이 좋습니다. [cite_start][15] [cite: 39]</li>
-                [cite_start]<li>현금영수증/증빙 : 현금영수증 의무발행업종 안내에는 “교육 서비스업(컴퓨터 학원 등)” 등 항목이 포함되어 있습니다. [cite: 40] [cite_start][16] 업종 코드를 무엇으로 가져가든, 실무적으로는 “현금/계좌이체 결제 시 현금영수증 발급 요청 대응” SOP를 기본으로 구축하는 것이 민원 방어에 유리합니다. [cite: 41] [cite_start][17] [cite: 42]</li>
-                [cite_start]<li>환불·분쟁 기준 : 한국소비자원은 “소비자분쟁해결기준”이 합의/권고 기준이며, 소비자에게 더 유리한 다른 기준이 있으면 그 기준을 우선한다는 원칙을 명시합니다. [cite: 43] [cite_start][18] 또한 학원 환불 분쟁조정 사례에서 “환급금 산정은 실제 결제금액 기준”이 타당하다고 판단한 사례가 있어, 할인/프로모션 운영 시 환불 산정 문구를 ‘실결제금액 기준’으로 고정하는 것이 중요합니다. [cite: 44] [cite_start][19] [cite: 45]</li>
+                <li><strong>부가가치세(간이/일반):</strong> 국세청은 일반과세자(연 매출 10,400만원 이상)와 간이과세자(10,400만원 미만) 기준 및 산식을 안내합니다. [cite_start]<a href="#src-15" class="cite-badge">[cite: 15]</a> “교육”이 아니라 “서비스/컨설팅” 프레임이라도 과세 가능성이 높으므로, 가격표는 초기에 “VAT 포함(소비자)”과 “공급가+VAT(기업)”을 분리해 운영하는 편이 계약·정산 효율이 좋습니다. [cite_start]<a href="#src-15" class="cite-badge">[cite: 15]</a></li>
+                <li><strong>현금영수증/증빙:</strong> 현금영수증 의무발행업종 안내에는 “교육 서비스업(컴퓨터 학원 등)” 등 항목이 포함되어 있습니다. [cite_start]<a href="#src-16" class="cite-badge">[cite: 16]</a> 업종 코드를 무엇으로 가져가든, 실무적으로는 “현금/계좌이체 결제 시 현금영수증 발급 요청 대응” SOP를 기본으로 구축하는 것이 민원 방어에 유리합니다. [cite_start]<a href="#src-17" class="cite-badge">[cite: 17]</a></li>
+                <li><strong>환불·분쟁 기준:</strong> 한국소비자원은 “소비자분쟁해결기준”이 합의/권고 기준이며, 소비자에게 더 유리한 다른 기준이 있으면 그 기준을 우선한다는 원칙을 명시합니다. [cite_start]<a href="#src-18" class="cite-badge">[cite: 18]</a> 또한 학원 환불 분쟁조정 사례에서 “환급금 산정은 실제 결제금액 기준”이 타당하다고 판단한 사례가 있어, 할인/프로모션 운영 시 환불 산정 문구를 ‘실결제금액 기준’으로 고정하는 것이 중요합니다. [cite_start]<a href="#src-19" class="cite-badge">[cite: 19]</a></li>
             </ul>
 
-            [cite_start]<h3>리뷰(얼리어답터) 마케팅의 법적 표시 의무 [cite: 46]</h3>
-            [cite_start]<p>공정거래위원회[20]는 경제적 이해관계 표시(추천·보증) 관련 안내서를 개정·배포하고, 표시 방법과 Q&A를 제시합니다. [cite: 47] [cite_start][21] 또한 국가법령정보센터의 “추천·보증 등에 관한 표시·광고 심사지침”은 표시문구를 소비자가 쉽게 찾을 수 있도록 추천·보증 내용과 근접 위치에 표시 하도록 하는 등 구체 원칙을 제시합니다. [cite: 48] [cite_start][22]따라서 Founding Builders(초기 리뷰 조건 할인) 운영은 “후기 템플릿+표시문구 템플릿”을 사전에 제공하는 방식으로 설계해야 합니다. [cite: 49]</p>
+            <h3>리뷰(얼리어답터) 마케팅의 법적 표시 의무</h3>
+            [cite_start]<p>공정거래위원회<a href="#src-20" class="cite-badge">[cite: 20]</a>는 경제적 이해관계 표시(추천·보증) 관련 안내서를 개정·배포하고, 표시 방법과 Q&A를 제시합니다. [cite_start]<a href="#src-21" class="cite-badge">[cite: 21]</a> 또한 국가법령정보센터의 “추천·보증 등에 관한 표시·광고 심사지침”은 표시문구를 소비자가 쉽게 찾을 수 있도록 <strong>추천·보증 내용과 근접 위치에 표시</strong>하도록 하는 등 구체 원칙을 제시합니다. [cite_start]<a href="#src-22" class="cite-badge">[cite: 22]</a> 따라서 Founding Builders(초기 리뷰 조건 할인) 운영은 “후기 템플릿+표시문구 템플릿”을 사전에 제공하는 방식으로 설계해야 합니다.</p>
         </section>
 
         <section id="market">
-            [cite_start]<h2>송도 1공구 시장과 경쟁자 분석 [cite: 50]</h2>
+            <h2><i class="fa-solid fa-magnifying-glass-chart"></i> 송도 1공구 시장과 경쟁자 분석</h2>
             
-            <div class="image-placeholder">
-                            </div>
+            <div class="metrics-grid">
+                <div class="metric-card">
+                    <div class="metric-label">송도 인구 (2025 기준)</div>
+                    <div class="metric-value">230,570명</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">IFEZ 사업체 수</div>
+                    <div class="metric-value">3,860개</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">IFEZ 고용 인원</div>
+                    <div class="metric-value">122,832명</div>
+                </div>
+            </div>
 
-            [cite_start]<h3>수요 구조: 직장인(성인) + 부모/키즈가 시간대로 공존 [cite: 51]</h3>
-            [cite_start]<p>송도는 2025-12-31 기준 인구 230,570명으로 공시되어 있으며, IFEZ(송도·영종·청라 합) 인구도 함께 공개됩니다. [cite: 52] [cite_start][2] 성인 시장의 핵심은 “직장인·창업자·프리랜서”이며, IFEZ 조사에서 사업체 수 3,860개, 고용 122,832명(2024년 말 기준) 등 지표가 공개되어 “퇴근 후 실습형 프로그램” 대상 풀이 충분함을 시사합니다. [cite: 53] [cite_start][4] [cite: 54]</p>
-            [cite_start]<p>키즈 시장은 이미 “등록 학원형 코딩 교육”이 존재하는 만큼, MADISON은 정규반 경쟁보다 “캠프/잼(짧고 강한 결과물)”로 포지셔닝하는 것이 비용·리스크·차별화 측면에서 유리합니다. [cite: 55] [cite_start]예컨대 크레버스[23] 산하 씨큐브코딩 송도국제센터는 학원등록번호 를 공개하고 있습니다. [cite: 56] [24] 또한 디랩[25]은 송도캠퍼스 주소/연락처를 지점 안내에 포함하고 있어, 송도 내 코딩 수요가 이미 검증되었음을 보여줍니다. [cite_start][26] [cite: 57]</p>
-
-            [cite_start]<h3>“학원형” 경쟁자와의 차별화 포인트 [cite: 58]</h3>
-            [cite_start]<p>Songdo 1공구에서 사용자가 선택할 수 있는 대체재는 대략 세 축입니다. [cite: 59]</p>
-            <ul>
-                <li>키즈 코딩학원(정규반): 씨큐브코딩/디랩 등 등록 학원형 운영. [cite_start][27] [cite: 60]</li>
-                <li>성인 교육(온라인 중심): 국내 대형 교육 플랫폼 중심. [cite_start][28] [cite: 61]</li>
-                <li>공간 대체재: 스터디카페/코워킹(집중 공간 제공). 예를 들어 스테이지나인[29]은 멤버십 가격을 공개하고 있습니다. [cite_start][30] [cite: 62]</li>
-            </ul>
-            <p>MADISON의 승부처는 “강의”가 아니라 “완성(Delivery)”입니다. [cite_start]즉, 고객이 얻는 가치는 (i) 세팅/요구정의/검증을 PM이 잡아주고, (ii) AI와 멘토로 막힘을 제거해, (iii) 데모 링크/영상 + 운영 체크리스트 까지 가져가는 “프로젝트 납품 경험”입니다. [cite: 63]</p>
-
-            [cite_start]<h3>가격 벤치마크(WTP)와 권장 고정가 [cite: 64]</h3>
-            [cite_start]<p>국내 공급자 벤치마크는 “고정가 설정”에 직접적인 기준선입니다. [cite: 65]</p>
+            <h3>수요 구조: 직장인(성인) + 부모/키즈가 시간대로 공존</h3>
+            <p>송도는 2025-12-31 기준 인구 230,570명으로 공시되어 있으며, IFEZ(송도·영종·청라 합) 인구도 함께 공개됩니다. [cite_start]<a href="#src-2" class="cite-badge">[cite: 2]</a> 성인 시장의 핵심은 “직장인·창업자·프리랜서”이며, IFEZ 조사에서 사업체 수 3,860개, 고용 122,832명(2024년 말 기준) 등 지표가 공개되어 “퇴근 후 실습형 프로그램” 대상 풀이 충분함을 시사합니다. [cite_start]<a href="#src-4" class="cite-badge">[cite: 4]</a></p>
             
-            <table>
-                <thead>
-                    <tr>
-                        [cite_start]<th>제공자 [cite: 66]</th>
-                        [cite_start]<th>상품/형태 [cite: 66]</th>
-                        [cite_start]<th>시간/기간 [cite: 66]</th>
-                        [cite_start]<th>가격(확인된 표기) [cite: 66]</th>
-                        [cite_start]<th>시사점 [cite: 66]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        [cite_start]<td>"패스트캠퍼스[5]" [cite: 66]</td>
-                        [cite_start]<td>오프라인 원데이(엑셀+AI) [cite: 66]</td>
-                        [cite_start]<td>5시간 [cite: 66]</td>
-                        [cite_start]<td>"199,000원" [cite: 66]</td>
-                        [cite_start]<td>"오프라인 5시간+BYOD 가격 앵커 [6]" [cite: 66]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>"한국생산성본부[31]" [cite: 66]</td>
-                        [cite_start]<td>생성형 AI 콘텐츠 기획/제작 [cite: 66]</td>
-                        [cite_start]<td>2일 14시간 [cite: 66]</td>
-                        [cite_start]<td>"630,000원(정상가)" [cite: 66]</td>
-                        [cite_start]<td>"2일 집중형 프리미엄 허용 [32]" [cite: 66]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>"KS아카데미[33]" [cite: 66]</td>
-                        [cite_start]<td>산업/직무 특화 AI 에이전트 설계 [cite: 66]</td>
-                        [cite_start]<td>24시간(3일) [cite: 66]</td>
-                        [cite_start]<td>"990,000원" [cite: 66]</td>
-                        [cite_start]<td>"고가(프로형)도 시장 존재 [34]" [cite: 66]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>"스파르타코딩클럽[35]" [cite: 66]</td>
-                        [cite_start]<td>노코드+AI 업무자동화 [cite: 66]</td>
-                        [cite_start]<td>28일 / 8h44m [cite: 66]</td>
-                        [cite_start]<td>"490,000원" [cite: 66]</td>
-                        [cite_start]<td>"온라인 4주형 앵커(중가) [36]" [cite: 66]</td>
-                    </tr>
-                </tbody>
-            </table>
+            <p>키즈 시장은 이미 “등록 학원형 코딩 교육”이 존재하는 만큼, MADISON은 정규반 경쟁보다 “캠프/잼(짧고 강한 결과물)”로 포지셔닝하는 것이 비용·리스크·차별화 측면에서 유리합니다. [cite_start]예컨대 크레버스<a href="#src-23" class="cite-badge">[cite: 23]</a> 산하 씨큐브코딩 송도국제센터는 <strong>학원등록번호</strong>를 공개하고 있습니다. [cite_start]<a href="#src-24" class="cite-badge">[cite: 24][cite_start]</a> 또한 디랩<a href="#src-25" class="cite-badge">[cite: 25]</a>은 송도캠퍼스 주소/연락처를 지점 안내에 포함하고 있어, 송도 내 코딩 수요가 이미 검증되었음을 보여줍니다. [cite_start]<a href="#src-26" class="cite-badge">[cite: 26]</a></p>
 
-            [cite_start]<p>MADISON 권장 고정가는 “송도 소수정예 오프라인 + 결과물(배포/운영) 포함” 프리미엄을 반영하되, 위 앵커 대비 과도한 이탈이 없도록 다음으로 제안합니다(초기 90일은 할인정책보다 ‘케이스북’이 KPI). [cite: 67]</p>
+            <h3>“학원형” 경쟁자와의 차별화 포인트</h3>
+            <p>Songdo 1공구에서 사용자가 선택할 수 있는 대체재는 대략 세 축입니다.</p>
             <ul>
-                [cite_start]<li>유료 체험(90분): 39,000원 [cite: 68]</li>
-                [cite_start]<li>성인 라이트 데이(3h): 169,000원 [cite: 69]</li>
-                [cite_start]<li>성인 풀 데이(5h): 229,000원 [cite: 70]</li>
-                [cite_start]<li>성인 2주 스프린트(4회): 1,090,000원 (정원 4~6) [cite: 71]</li>
-                [cite_start]<li>월 멤버십(예약형 클리닉 4회): 290,000원 (공간 제공형 금지) [cite: 72]</li>
-                [cite_start]<li>키즈 게임잼(3h): 99,000원 [cite: 73]</li>
-                [cite_start]<li>키즈 2일 캠프(총 6h): 249,000원 [cite: 74]</li>
-                [cite_start]<li>키즈 태블릿 트랙(2.5h): 59,000원 [cite: 75]</li>
+                <li><strong>키즈 코딩학원(정규반):</strong> 씨큐브코딩/디랩 등 등록 학원형 운영. [cite_start]<a href="#src-27" class="cite-badge">[cite: 27]</a></li>
+                <li><strong>성인 교육(온라인 중심):</strong> 국내 대형 교육 플랫폼 중심. [cite_start]<a href="#src-28" class="cite-badge">[cite: 28]</a></li>
+                <li><strong>공간 대체재:</strong> 스터디카페/코워킹(집중 공간 제공). [cite_start]예를 들어 스테이지나인<a href="#src-29" class="cite-badge">[cite: 29]</a>은 멤버십 가격을 공개하고 있습니다. [cite_start]<a href="#src-30" class="cite-badge">[cite: 30]</a></li>
             </ul>
-            <p>이 가격은 “오프라인 원데이 199k(패스트캠퍼스)”와 “온라인 4주 490k(스파르타)” 사이에서, ‘완성’ 비용을 정당화 하는 구간입니다. [cite_start][28] [cite: 76]</p>
+            <div class="callout">
+                <p>MADISON의 승부처는 “강의”가 아니라 <strong>“완성(Delivery)”</strong>입니다. 즉, 고객이 얻는 가치는 (i) 세팅/요구정의/검증을 PM이 잡아주고, (ii) AI와 멘토로 막힘을 제거해, (iii) <strong>데모 링크/영상 + 운영 체크리스트</strong>까지 가져가는 “프로젝트 납품 경험”입니다.</p>
+            </div>
 
-            [cite_start]<h3>상권 데이터 확보 방법(공식/준공식) [cite: 77]</h3>
-            [cite_start]<p>송도 1공구 단위로 유동/매출을 더 정교하게 보려면, 소상공인시장진흥공단[37]의 “소상공인365(빅데이터 기반 상권분석)”를 활용해 행정동/상권 단위 지표 를 확인할 수 있습니다. [cite: 78] [cite_start][38] 또한 “학원 현황/교습비/정원” 등 경쟁 밀도를 공식 데이터로 매핑하려면, data.go.kr의 “인천 동부교육지원청 학원 현황” 파일데이터를 내려받아 ‘송도동/해돋이로/신송로’ 등으로 필터링하는 방식이 가장 깔끔합니다. [cite: 79] [cite_start][39] [cite: 80]</p>
+            <h3>가격 벤치마크(WTP)와 권장 고정가</h3>
+            <p>국내 공급자 벤치마크는 “고정가 설정”에 직접적인 기준선입니다.</p>
+            
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>제공자</th>
+                            <th>상품/형태</th>
+                            <th>시간/기간</th>
+                            <th>가격(확인된 표기)</th>
+                            <th>시사점</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            [cite_start]<td>패스트캠퍼스<a href="#src-5" class="cite-badge">[cite: 5]</a></td>
+                            <td>오프라인 원데이(엑셀+AI)</td>
+                            <td>5시간</td>
+                            <td>199,000원</td>
+                            [cite_start]<td>오프라인 5시간+BYOD 가격 앵커 <a href="#src-6" class="cite-badge">[cite: 6]</a></td>
+                        </tr>
+                        <tr>
+                            [cite_start]<td>한국생산성본부<a href="#src-31" class="cite-badge">[cite: 31]</a></td>
+                            <td>생성형 AI 콘텐츠 기획/제작</td>
+                            <td>2일 14시간</td>
+                            <td>630,000원(정상가)</td>
+                            [cite_start]<td>2일 집중형 프리미엄 허용 <a href="#src-32" class="cite-badge">[cite: 32]</a></td>
+                        </tr>
+                        <tr>
+                            [cite_start]<td>KS아카데미<a href="#src-33" class="cite-badge">[cite: 33]</a></td>
+                            <td>산업/직무 특화 AI 에이전트 설계</td>
+                            <td>24시간(3일)</td>
+                            <td>990,000원</td>
+                            [cite_start]<td>고가(프로형)도 시장 존재 <a href="#src-34" class="cite-badge">[cite: 34]</a></td>
+                        </tr>
+                        <tr>
+                            [cite_start]<td>스파르타코딩클럽<a href="#src-35" class="cite-badge">[cite: 35]</a></td>
+                            <td>노코드+AI 업무자동화</td>
+                            <td>28일 / 8h44m</td>
+                            <td>490,000원</td>
+                            [cite_start]<td>온라인 4주형 앵커(중가) <a href="#src-36" class="cite-badge">[cite: 36]</a></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <h4>MADISON 권장 고정가</h4>
+            <p>“송도 소수정예 오프라인 + 결과물(배포/운영) 포함” 프리미엄을 반영하되, 위 앵커 대비 과도한 이탈이 없도록 다음으로 제안합니다(초기 90일은 할인정책보다 ‘케이스북’이 KPI).</p>
+            <ul>
+                <li>유료 체험(90분): <strong>39,000원</strong></li>
+                <li>성인 라이트 데이(3h): <strong>169,000원</strong></li>
+                <li>성인 풀 데이(5h): <strong>229,000원</strong></li>
+                <li>성인 2주 스프린트(4회): <strong>1,090,000원</strong> (정원 4~6)</li>
+                <li>월 멤버십(예약형 클리닉 4회): <strong>290,000원</strong> (공간 제공형 금지)</li>
+                <li>키즈 게임잼(3h): <strong>99,000원</strong></li>
+                <li>키즈 2일 캠프(총 6h): <strong>249,000원</strong></li>
+                <li>키즈 태블릿 트랙(2.5h): <strong>59,000원</strong></li>
+            </ul>
+            <p>이 가격은 “오프라인 원데이 199k(패스트캠퍼스)”와 “온라인 4주 490k(스파르타)” 사이에서, <strong>‘완성’ 비용을 정당화</strong> 하는 구간입니다. [cite_start]<a href="#src-28" class="cite-badge">[cite: 28]</a></p>
+
+            <h3>상권 데이터 확보 방법(공식/준공식)</h3>
+            [cite_start]<p>송도 1공구 단위로 유동/매출을 더 정교하게 보려면, 소상공인시장진흥공단<a href="#src-37" class="cite-badge">[cite: 37]</a>의 “소상공인365(빅데이터 기반 상권분석)”를 활용해 <strong>행정동/상권 단위 지표</strong>를 확인할 수 있습니다. [cite_start]<a href="#src-38" class="cite-badge">[cite: 38]</a> 또한 “학원 현황/교습비/정원” 등 경쟁 밀도를 공식 데이터로 매핑하려면, data.go.kr의 “인천 동부교육지원청 학원 현황” 파일데이터를 내려받아 ‘송도동/해돋이로/신송로’ 등으로 필터링하는 방식이 가장 깔끔합니다. [cite_start]<a href="#src-39" class="cite-badge">[cite: 39]</a></p>
         </section>
 
         <section id="product">
-            [cite_start]<h2>제품 라인업과 커리큘럼 매트릭스 [cite: 81]</h2>
+            <h2><i class="fa-solid fa-box-open"></i> 제품 라인업과 커리큘럼 매트릭스</h2>
             
-            [cite_start]<h3>기기·디바이스 정책(성인 BYOD, 키즈 하이브리드) [cite: 82]</h3>
+            <h3>기기·디바이스 정책(성인 BYOD, 키즈 하이브리드)</h3>
             <ul>
-                <li>성인 BYOD는 오프라인 원데이에서도 “개별 노트북 지참”이 표준 운영임이 확인됩니다. [cite_start][6] [cite: 83]</li>
-                [cite_start]<li>키즈는 노트북 완전 BYOD가 현실적으로 어려우므로, “태블릿 트랙(저연령)”과 “부모 노트북 BYOD + 소량 대여 옵션(고연령)”을 병행합니다. [cite: 84]</li>
-                <li>ScratchJr는 iPad 및 Android 태블릿에서 실행된다고 명시되어 있어(저연령 태블릿 트랙 근거), 기기 투자 최소화에 유리합니다. [cite_start][40] [cite: 85]</li>
-                <li>결과물 공유는 Scratch에서 “Share”로 링크 공유가 가능하다고 안내되어 있어, 부모 만족(‘집에서 보여주는 결과물’)에 유리합니다. [cite_start][41] [cite: 86]</li>
-                <li>브라우저 기반 게임잼은 MakeCode Arcade가 “web-based”이며 설치 없이 Blocks/JavaScript로 제작 가능하다고 설명해 단기 캠프에 적합합니다. [cite_start][42] [cite: 87]</li>
-                <li>상급(12+)은 Roblox Studio가 Windows/Mac 앱이며 최소/권장 사양을 제공하므로, “사전 설치 체크리스트”로 운영 리스크를 낮출 수 있습니다. [cite_start][43] [cite: 88]</li>
+                <li>성인 BYOD는 오프라인 원데이에서도 “개별 노트북 지참”이 표준 운영임이 확인됩니다. [cite_start]<a href="#src-6" class="cite-badge">[cite: 6]</a></li>
+                <li>키즈는 노트북 완전 BYOD가 현실적으로 어려우므로, “태블릿 트랙(저연령)”과 “부모 노트북 BYOD + 소량 대여 옵션(고연령)”을 병행합니다.</li>
+                <li>ScratchJr는 iPad 및 Android 태블릿에서 실행된다고 명시되어 있어(저연령 태블릿 트랙 근거), 기기 투자 최소화에 유리합니다. [cite_start]<a href="#src-40" class="cite-badge">[cite: 40]</a></li>
+                <li>결과물 공유는 Scratch에서 “Share”로 링크 공유가 가능하다고 안내되어 있어, 부모 만족(‘집에서 보여주는 결과물’)에 유리합니다. [cite_start]<a href="#src-41" class="cite-badge">[cite: 41]</a></li>
+                <li>브라우저 기반 게임잼은 MakeCode Arcade가 “web-based”이며 설치 없이 Blocks/JavaScript로 제작 가능하다고 설명해 단기 캠프에 적합합니다. [cite_start]<a href="#src-42" class="cite-badge">[cite: 42]</a></li>
+                <li>상급(12+)은 Roblox Studio가 Windows/Mac 앱이며 최소/권장 사양을 제공하므로, “사전 설치 체크리스트”로 운영 리스크를 낮출 수 있습니다. [cite_start]<a href="#src-43" class="cite-badge">[cite: 43]</a></li>
             </ul>
 
-            [cite_start]<h3>제품 라인업 매트릭스(학원형이 아닌 ‘제작형’) [cite: 89]</h3>
-            <table>
-                <thead>
-                    <tr>
-                        [cite_start]<th>트랙 [cite: 90]</th>
-                        [cite_start]<th>상품 [cite: 90]</th>
-                        [cite_start]<th>핵심 목표 [cite: 90]</th>
-                        [cite_start]<th>최소 산출물(DoD) [cite: 90]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        [cite_start]<td>공통 [cite: 90]</td>
-                        [cite_start]<td>유료 체험(90분) [cite: 90]</td>
-                        [cite_start]<td>“내가 만들 것”이 성립하는지 검증 [cite: 90]</td>
-                        [cite_start]<td>PRD 1장 + 미니 데모(스크린샷/링크) [cite: 90]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>성인 [cite: 90]</td>
-                        [cite_start]<td>라이트 데이(3h) [cite: 90]</td>
-                        [cite_start]<td>자동화/프로토타입 1개 ‘작동’ [cite: 90]</td>
-                        [cite_start]<td>데모(링크/영상) + 운영 체크리스트 v0 [cite: 90]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>성인 [cite: 90]</td>
-                        [cite_start]<td>풀 데이(5h) [cite: 90]</td>
-                        [cite_start]<td>‘작동 + 재사용’ 수준까지 고도화 [cite: 90]</td>
-                        [cite_start]<td>PRD v1 + 배포/운영 체크리스트 + 버그리포트 1건 [cite: 90]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>성인 [cite: 90]</td>
-                        [cite_start]<td>2주 스프린트(4회) [cite: 90]</td>
-                        [cite_start]<td>2주 내 KPI가 측정되는 결과물 [cite: 90]</td>
-                        [cite_start]<td>MVP + KPI 정의 + 데모데이 자료 [cite: 90]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>성인 [cite: 90]</td>
-                        [cite_start]<td>멤버십(월) [cite: 90]</td>
-                        [cite_start]<td>유지보수·확장(리뷰/클리닉) [cite: 90]</td>
-                        [cite_start]<td>월 1회 릴리즈 노트 + 장애 대응 템플릿 [cite: 90]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>키즈 [cite: 90]</td>
-                        [cite_start]<td>1일 게임잼(3h) [cite: 90]</td>
-                        [cite_start]<td>“내가 만든 게임” 완성 [cite: 90]</td>
-                        [cite_start]<td>게임 링크/파일 + 30초 영상 + 부모 리포트 [cite: 90]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>키즈 [cite: 90]</td>
-                        [cite_start]<td>2일 캠프(총 6h) [cite: 90]</td>
-                        [cite_start]<td>팀/발표 경험 + 결과물 퀄리티 [cite: 90]</td>
-                        [cite_start]<td>발표 영상 + 게임 고도화 + 성장 리포트 [cite: 90]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>키즈 [cite: 90]</td>
-                        [cite_start]<td>태블릿 트랙(2.5h) [cite: 90]</td>
-                        [cite_start]<td>저연령 스토리/게임 제작 [cite: 90]</td>
-                        [cite_start]<td>스크린레코딩 + 스토리보드 [cite: 90]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>크리에이터 [cite: 90]</td>
-                        [cite_start]<td>콘텐츠 자동화(3h) [cite: 90]</td>
-                        [cite_start]<td>스크립트/썸네일/업로드 루틴 자동화 [cite: 90]</td>
-                        [cite_start]<td>콘텐츠 파이프라인 SOP + 템플릿 번들 [cite: 90]</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h3>제품 라인업 매트릭스(학원형이 아닌 ‘제작형’)</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>트랙</th>
+                            <th>상품</th>
+                            <th>핵심 목표</th>
+                            <th>최소 산출물(DoD)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>공통</td><td>유료 체험(90분)</td><td>“내가 만들 것”이 성립하는지 검증</td><td>PRD 1장 + 미니 데모(스크린샷/링크)</td></tr>
+                        <tr><td>성인</td><td>라이트 데이(3h)</td><td>자동화/프로토타입 1개 ‘작동’</td><td>데모(링크/영상) + 운영 체크리스트 v0</td></tr>
+                        <tr><td>성인</td><td>풀 데이(5h)</td><td>‘작동 + 재사용’ 수준까지 고도화</td><td>PRD v1 + 배포/운영 체크리스트 + 버그리포트 1건</td></tr>
+                        <tr><td>성인</td><td>2주 스프린트(4회)</td><td>2주 내 KPI가 측정되는 결과물</td><td>MVP + KPI 정의 + 데모데이 자료</td></tr>
+                        <tr><td>성인</td><td>멤버십(월)</td><td>유지보수·확장(리뷰/클리닉)</td><td>월 1회 릴리즈 노트 + 장애 대응 템플릿</td></tr>
+                        <tr><td>키즈</td><td>1일 게임잼(3h)</td><td>“내가 만든 게임” 완성</td><td>게임 링크/파일 + 30초 영상 + 부모 리포트</td></tr>
+                        <tr><td>키즈</td><td>2일 캠프(총 6h)</td><td>팀/발표 경험 + 결과물 퀄리티</td><td>발표 영상 + 게임 고도화 + 성장 리포트</td></tr>
+                        <tr><td>키즈</td><td>태블릿 트랙(2.5h)</td><td>저연령 스토리/게임 제작</td><td>스크린레코딩 + 스토리보드</td></tr>
+                        <tr><td>크리에이터</td><td>콘텐츠 자동화(3h)</td><td>스크립트/썸네일/업로드 루틴 자동화</td><td>콘텐츠 파이프라인 SOP + 템플릿 번들</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-            [cite_start]<h3>분 단위 운영안(기본형) [cite: 91]</h3>
-            [cite_start]<p>아래 타임테이블은 “대표가 코딩을 직접 하지 않는” 전제에서, 프로듀서(대표)가 요구정의/범위관리/검증 을 맡고, 멘토가 막힘을 제거하는 구조로 설계되었습니다. [cite: 92]</p>
+            <h3>분 단위 운영안(기본형)</h3>
+            <p>아래 타임테이블은 “대표가 코딩을 직접 하지 않는” 전제에서, 프로듀서(대표)가 <strong>요구정의/범위관리/검증</strong>을 맡고, 멘토가 막힘을 제거하는 구조로 설계되었습니다.</p>
             
-            [cite_start]<h4>유료 체험(90분) 분 단위 [cite: 93]</h4>
-            <ul>
-                [cite_start]<li>00:00–00:10 체크인(장비/계정/목표 확인) [cite: 94]</li>
-                [cite_start]<li>00:10–00:25 내 목표 1문장 → 성공기준(KPI 후보 1개) 확정 [cite: 95]</li>
-                [cite_start]<li>00:25–00:45 PRD 1장 작성(템플릿) [cite: 96]</li>
-                [cite_start]<li>00:45–01:10 프롬프트 시트 초안(입력/출력/제약/테스트케이스 3개) [cite: 97]</li>
-                [cite_start]<li>01:10–01:20 미니 데모 제작(가장 짧은 흐름) [cite: 98]</li>
-                [cite_start]<li>01:20–01:30 Gate 판정: “라이트/풀/스프린트” 추천 + 사전 과제 부여 [cite: 99]</li>
+            <h4>유료 체험(90분) 분 단위</h4>
+            <ul class="timeline-list">
+                <li><span class="time-badge">00:00–00:10</span> 체크인(장비/계정/목표 확인)</li>
+                <li><span class="time-badge">00:10–00:25</span> 내 목표 1문장 → 성공기준(KPI 후보 1개) 확정</li>
+                <li><span class="time-badge">00:25–00:45</span> PRD 1장 작성(템플릿)</li>
+                <li><span class="time-badge">00:45–01:10</span> 프롬프트 시트 초안(입력/출력/제약/테스트케이스 3개)</li>
+                <li><span class="time-badge">01:10–01:20</span> 미니 데모 제작(가장 짧은 흐름)</li>
+                <li><span class="time-badge">01:20–01:30</span> Gate 판정: “라이트/풀/스프린트” 추천 + 사전 과제 부여</li>
             </ul>
 
-            [cite_start]<h4>성인 라이트 데이(3시간) 분 단위 [cite: 100]</h4>
-            <ul>
-                [cite_start]<li>00:00–00:10 목표 확정(“오늘 끝낼 것 1개”) [cite: 101]</li>
-                [cite_start]<li>00:10–00:30 PRD 1장(문제/사용자/입·출력/제약) [cite: 102]</li>
-                [cite_start]<li>00:30–01:05 빌드 1차(End-to-End 작동 우선) [cite: 103]</li>
-                [cite_start]<li>01:05–01:15 휴식 [cite: 104]</li>
-                [cite_start]<li>01:15–01:45 안정화(예외/권한/로그) [cite: 105]</li>
-                [cite_start]<li>01:45–02:25 디버깅 루프(버그리포트 1건 작성) [cite: 106]</li>
-                [cite_start]<li>02:25–02:45 운영 체크리스트 v0(재실행/백업/권한) [cite: 107]</li>
-                [cite_start]<li>02:45–03:00 데모 영상 30초 + 다음 액션(스프린트/멤버십) [cite: 108]</li>
+            <h4>성인 라이트 데이(3시간) 분 단위</h4>
+            <ul class="timeline-list">
+                <li><span class="time-badge">00:00–00:10</span> 목표 확정(“오늘 끝낼 것 1개”)</li>
+                <li><span class="time-badge">00:10–00:30</span> PRD 1장(문제/사용자/입·출력/제약)</li>
+                <li><span class="time-badge">00:30–01:05</span> 빌드 1차(End-to-End 작동 우선)</li>
+                <li><span class="time-badge">01:05–01:15</span> 휴식</li>
+                <li><span class="time-badge">01:15–01:45</span> 안정화(예외/권한/로그)</li>
+                <li><span class="time-badge">01:45–02:25</span> 디버깅 루프(버그리포트 1건 작성)</li>
+                <li><span class="time-badge">02:25–02:45</span> 운영 체크리스트 v0(재실행/백업/권한)</li>
+                <li><span class="time-badge">02:45–03:00</span> 데모 영상 30초 + 다음 액션(스프린트/멤버십)</li>
             </ul>
 
-            [cite_start]<h4>성인 풀 데이(5시간) 분 단위 [cite: 109]</h4>
-            <ul>
-                [cite_start]<li>00:00–00:15 목표·범위(Scope) 확정(“오늘 배포 가능한 수준”) [cite: 110]</li>
-                [cite_start]<li>00:15–00:40 PRD v1 + KPI 1개 고정 [cite: 111]</li>
-                [cite_start]<li>00:40–01:30 빌드 1차(핵심 플로우) [cite: 112]</li>
-                [cite_start]<li>01:30–01:40 휴식 [cite: 113]</li>
-                [cite_start]<li>01:40–02:30 빌드 2차(예외/데이터 처리) [cite: 114]</li>
-                [cite_start]<li>02:30–03:00 테스트케이스·로그·권한 점검 [cite: 115]</li>
-                [cite_start]<li>03:00–03:10 휴식 [cite: 116]</li>
-                [cite_start]<li>03:10–04:00 배포/공유(링크/실행/권한) [cite: 117]</li>
-                [cite_start]<li>04:00–04:35 운영문서(배포 체크리스트/롤백/백업) [cite: 118]</li>
-                [cite_start]<li>04:35–05:00 Demo Day 리허설(1분 발표) + 케이스 카드 작성 [cite: 119]</li>
+            <h4>성인 풀 데이(5시간) 분 단위</h4>
+            <ul class="timeline-list">
+                <li><span class="time-badge">00:00–00:15</span> 목표·범위(Scope) 확정(“오늘 배포 가능한 수준”)</li>
+                <li><span class="time-badge">00:15–00:40</span> PRD v1 + KPI 1개 고정</li>
+                <li><span class="time-badge">00:40–01:30</span> 빌드 1차(핵심 플로우)</li>
+                <li><span class="time-badge">01:30–01:40</span> 휴식</li>
+                <li><span class="time-badge">01:40–02:30</span> 빌드 2차(예외/데이터 처리)</li>
+                <li><span class="time-badge">02:30–03:00</span> 테스트케이스·로그·권한 점검</li>
+                <li><span class="time-badge">03:00–03:10</span> 휴식</li>
+                <li><span class="time-badge">03:10–04:00</span> 배포/공유(링크/실행/권한)</li>
+                <li><span class="time-badge">04:00–04:35</span> 운영문서(배포 체크리스트/롤백/백업)</li>
+                <li><span class="time-badge">04:35–05:00</span> Demo Day 리허설(1분 발표) + 케이스 카드 작성</li>
             </ul>
 
-            [cite_start]<h4>성인 2주 스프린트(4회, 회당 150분) 분 단위 [cite: 120]</h4>
-            <ul>
-                [cite_start]<li>1회차: PRD 확정(45) + 아키텍처/툴 선택(30) + 데모 0단계(60) + 리스크/과제(15) [cite: 121]</li>
-                [cite_start]<li>2회차: 빌드 1차(90) + 디버깅(45) + 릴리즈 노트 초안(15) [cite: 122]</li>
-                [cite_start]<li>3회차: 기능 확장(75) + 테스트(45) + 배포/권한(30) [cite: 123]</li>
-                [cite_start]<li>4회차: KPI 측정(30) + 안정화(60) + 발표/피드백(60) [cite: 124]</li>
+            <h4>성인 2주 스프린트(4회, 회당 150분) 분 단위</h4>
+            <ul class="timeline-list">
+                <li><span class="time-badge">1회차</span> PRD 확정(45) + 아키텍처/툴 선택(30) + 데모 0단계(60) + 리스크/과제(15)</li>
+                <li><span class="time-badge">2회차</span> 빌드 1차(90) + 디버깅(45) + 릴리즈 노트 초안(15)</li>
+                <li><span class="time-badge">3회차</span> 기능 확장(75) + 테스트(45) + 배포/권한(30)</li>
+                <li><span class="time-badge">4회차</span> KPI 측정(30) + 안정화(60) + 발표/피드백(60)</li>
             </ul>
 
-            [cite_start]<h4>키즈 1일 게임잼(3시간) 분 단위 [cite: 125]</h4>
-            <ul>
-                [cite_start]<li>00:00–00:15 아이스브레이킹 + “오늘 만들 게임” 고르기 [cite: 126]</li>
-                [cite_start]<li>00:15–00:40 캐릭터/스토리(기획 카드 작성) [cite: 127]</li>
-                [cite_start]<li>00:40–01:20 구현(블록코딩/게임 룰) [cite: 128]</li>
-                [cite_start]<li>01:20–01:30 휴식 [cite: 129]</li>
-                [cite_start]<li>01:30–02:20 점수/레벨업/버그 수정(테스트 중심) [cite: 130]</li>
-                [cite_start]<li>02:20–02:45 발표 준비(룰 설명 30초 + 플레이 영상) [cite: 131]</li>
-                [cite_start]<li>02:45–03:00 부모 공유 리포트 작성 + 결과물 링크 전달(Share) [cite: 132]</li>
+            <h4>키즈 1일 게임잼(3시간) 분 단위</h4>
+            <ul class="timeline-list">
+                <li><span class="time-badge">00:00–00:15</span> 아이스브레이킹 + “오늘 만들 게임” 고르기</li>
+                <li><span class="time-badge">00:15–00:40</span> 캐릭터/스토리(기획 카드 작성)</li>
+                <li><span class="time-badge">00:40–01:20</span> 구현(블록코딩/게임 룰)</li>
+                <li><span class="time-badge">01:20–01:30</span> 휴식</li>
+                <li><span class="time-badge">01:30–02:20</span> 점수/레벨업/버그 수정(테스트 중심)</li>
+                <li><span class="time-badge">02:20–02:45</span> 발표 준비(룰 설명 30초 + 플레이 영상)</li>
+                <li><span class="time-badge">02:45–03:00</span> 부모 공유 리포트 작성 + 결과물 링크 전달(Share)</li>
             </ul>
-            <p>Scratch 공유 방법은 프로젝트 페이지에서 “Share” 버튼을 통해 링크를 전달할 수 있다고 안내됩니다. [cite_start][41] [cite: 133]</p>
+            <p>Scratch 공유 방법은 프로젝트 페이지에서 “Share” 버튼을 통해 링크를 전달할 수 있다고 안내됩니다. [cite_start]<a href="#src-41" class="cite-badge">[cite: 41]</a></p>
 
-            [cite_start]<h4>키즈 2일 캠프(총 6시간) 분 단위 [cite: 134]</h4>
-            <ul>
-                [cite_start]<li>Day1(180분): 기획(45) + 구현(105) + 테스트(30) [cite: 135]</li>
-                [cite_start]<li>Day2(180분): 고도화(90) + 영상/발표(60) + Demo Day(30) [cite: 136]</li>
-            </ul>
-
-            [cite_start]<h4>키즈 태블릿 트랙(2.5시간) 분 단위 [cite: 137]</h4>
-            <ul>
-                [cite_start]<li>00:00–00:15 앱/환경 세팅 및 안내 [cite: 138]</li>
-                [cite_start]<li>00:15–01:10 스토리 제작(장면/캐릭터/대사) [cite: 139]</li>
-                [cite_start]<li>01:10–01:20 휴식 [cite: 140]</li>
-                [cite_start]<li>01:20–02:10 상호작용(이벤트) 추가 + 테스트 [cite: 141]</li>
-                [cite_start]<li>02:10–02:30 화면녹화/공유 + 보호자 안내 [cite: 142]</li>
-            </ul>
-            <p>ScratchJr은 iPad/Android 태블릿에서 동작한다는 FAQ가 명시되어 있습니다. [cite_start][44] [cite: 143]</p>
-
-            [cite_start]<h4>크리에이터 트랙: 콘텐츠 자동화(3시간) 분 단위 [cite: 144]</h4>
-            <ul>
-                [cite_start]<li>00:00–00:20 채널/브랜드 톤 분석(샘플 3개) [cite: 145]</li>
-                [cite_start]<li>00:20–00:50 스크립트 프롬프트 설계(훅/구성/CTA) [cite: 146]</li>
-                [cite_start]<li>00:50–01:30 스크립트 10개 생산 + 품질 기준(DoD) 체크 [cite: 147]</li>
-                [cite_start]<li>01:30–01:40 휴식 [cite: 148]</li>
-                [cite_start]<li>01:40–02:10 썸네일 문구 30개 + A/B 룰 [cite: 149]</li>
-                [cite_start]<li>02:10–02:40 업로드 체크리스트(태그/설명/댓글 고정/리포트) [cite: 150]</li>
-                [cite_start]<li>02:40–03:00 “콘텐츠 공장” SOP 문서화 + 다음 달 제작 캘린더 [cite: 151]</li>
+            <h4>키즈 2일 캠프(총 6시간) 분 단위</h4>
+            <ul class="timeline-list">
+                <li><span class="time-badge">Day 1 (180분)</span> 기획(45) + 구현(105) + 테스트(30)</li>
+                <li><span class="time-badge">Day 2 (180분)</span> 고도화(90) + 영상/발표(60) + Demo Day(30)</li>
             </ul>
 
-            [cite_start]<h3>샘플 프로젝트 아이디어(대표가 코딩을 하지 않아도 되는 유형) [cite: 152]</h3>
+            <h4>키즈 태블릿 트랙(2.5시간) 분 단위</h4>
+            <ul class="timeline-list">
+                <li><span class="time-badge">00:00–00:15</span> 앱/환경 세팅 및 안내</li>
+                <li><span class="time-badge">00:15–01:10</span> 스토리 제작(장면/캐릭터/대사)</li>
+                <li><span class="time-badge">01:10–01:20</span> 휴식</li>
+                <li><span class="time-badge">01:20–02:10</span> 상호작용(이벤트) 추가 + 테스트</li>
+                <li><span class="time-badge">02:10–02:30</span> 화면녹화/공유 + 보호자 안내</li>
+            </ul>
+            <p>ScratchJr은 iPad/Android 태블릿에서 동작한다는 FAQ가 명시되어 있습니다. [cite_start]<a href="#src-44" class="cite-badge">[cite: 44]</a></p>
+
+            <h4>크리에이터 트랙: 콘텐츠 자동화(3시간) 분 단위</h4>
+            <ul class="timeline-list">
+                <li><span class="time-badge">00:00–00:20</span> 채널/브랜드 톤 분석(샘플 3개)</li>
+                <li><span class="time-badge">00:20–00:50</span> 스크립트 프롬프트 설계(훅/구성/CTA)</li>
+                <li><span class="time-badge">00:50–01:30</span> 스크립트 10개 생산 + 품질 기준(DoD) 체크</li>
+                <li><span class="time-badge">01:30–01:40</span> 휴식</li>
+                <li><span class="time-badge">01:40–02:10</span> 썸네일 문구 30개 + A/B 룰</li>
+                <li><span class="time-badge">02:10–02:40</span> 업로드 체크리스트(태그/설명/댓글 고정/리포트)</li>
+                <li><span class="time-badge">02:40–03:00</span> “콘텐츠 공장” SOP 문서화 + 다음 달 제작 캘린더</li>
+            </ul>
+
+            <h3>샘플 프로젝트 아이디어(대표가 코딩을 하지 않아도 되는 유형)</h3>
             <ul>
-                [cite_start]<li>업무 자동화: “메일/문의 요약→답변 초안→스프레드시트 기록”, “주간 보고서 자동 생성”, “리드/문의 분류” [cite: 153]</li>
-                [cite_start]<li>소상공인: “예약/문의/견적 자동 응대”, “후기 수집/정리”, “재고/발주 알림” [cite: 154]</li>
-                [cite_start]<li>크리에이터: “스크립트-썸네일-업로드 루틴 자동화”, “댓글/피드백 요약 리포트” [cite: 155]</li>
-                [cite_start]<li>키즈: “레트로 슈팅/플랫폼/퀴즈 게임”, “스토리 기반 미니 게임” (MakeCode는 설치 없이 브라우저에서 제작 가능) [45] [cite: 156]</li>
+                <li><strong>업무 자동화:</strong> “메일/문의 요약→답변 초안→스프레드시트 기록”, “주간 보고서 자동 생성”, “리드/문의 분류”</li>
+                <li><strong>소상공인:</strong> “예약/문의/견적 자동 응대”, “후기 수집/정리”, “재고/발주 알림”</li>
+                <li><strong>크리에이터:</strong> “스크립트-썸네일-업로드 루틴 자동화”, “댓글/피드백 요약 리포트”</li>
+                [cite_start]<li><strong>키즈:</strong> “레트로 슈팅/플랫폼/퀴즈 게임”, “스토리 기반 미니 게임” (MakeCode는 설치 없이 브라우저에서 제작 가능) <a href="#src-45" class="cite-badge">[cite: 45]</a></li>
             </ul>
         </section>
 
         <section id="finance">
-            [cite_start]<h2>재무 모델과 좌석 기반 시뮬레이션 [cite: 157]</h2>
+            <h2><i class="fa-solid fa-calculator"></i> 재무 모델과 좌석 기반 시뮬레이션</h2>
             
-            [cite_start]<h3>입력 변수 테이블(미확정 항목) [cite: 158]</h3>
-            [cite_start]<p>송도 1공구 오피스텔의 정확한 임대조건/관리비는 케이스별 편차가 크므로, 본 계획은 아래를 입력변수로 둡니다. [cite: 159]</p>
+            <h3>입력 변수 테이블(미확정 항목)</h3>
+            <p>송도 1공구 오피스텔의 정확한 임대조건/관리비는 케이스별 편차가 크므로, 본 계획은 아래를 입력변수로 둡니다.</p>
             
-            <table>
-                <thead>
-                    <tr>
-                        [cite_start]<th>변수 [cite: 160]</th>
-                        [cite_start]<th>기본값(가정) [cite: 160]</th>
-                        [cite_start]<th>메모 [cite: 160]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        [cite_start]<td>좌석 수(동시간) [cite: 160]</td>
-                        [cite_start]<td>8석 [cite: 160]</td>
-                        [cite_start]<td>9 이하 유지 권장(컴플라이언스/운영 품질) [cite: 160]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>월 임대료+관리비 [cite: 160]</td>
-                        [cite_start]<td>150만원 [cite: 160]</td>
-                        [cite_start]<td>사용자 입력 [cite: 160]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>월 통신/전기 [cite: 160]</td>
-                        [cite_start]<td>15만원 [cite: 160]</td>
-                        [cite_start]<td>사용자 입력 [cite: 160]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>월 마케팅 [cite: 160]</td>
-                        [cite_start]<td>30만원 [cite: 160]</td>
-                        [cite_start]<td>사용자 입력 [cite: 160]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>기타 고정비 [cite: 160]</td>
-                        [cite_start]<td>55만원 [cite: 160]</td>
-                        [cite_start]<td>보험/소모품/회계 등 [cite: 160]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>월 고정비 합 [cite: 160]</td>
-                        [cite_start]<td>250만원 [cite: 160]</td>
-                        [cite_start]<td>위 합계(초기 가정) [cite: 160]</td>
-                    </tr>
-                </tbody>
-            </table>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>변수</th>
+                            <th>기본값(가정)</th>
+                            <th>메모</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>좌석 수(동시간)</td><td>8석</td><td>9 이하 유지 권장(컴플라이언스/운영 품질)</td></tr>
+                        <tr><td>월 임대료+관리비</td><td>150만원</td><td>사용자 입력</td></tr>
+                        <tr><td>월 통신/전기</td><td>15만원</td><td>사용자 입력</td></tr>
+                        <tr><td>월 마케팅</td><td>30만원</td><td>사용자 입력</td></tr>
+                        <tr><td>기타 고정비</td><td>55만원</td><td>보험/소모품/회계 등</td></tr>
+                        <tr><td>월 고정비 합</td><td><strong>250만원</strong></td><td>위 합계(초기 가정)</td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-            [cite_start]<h3>첫 달 매출 시뮬레이션(8석, 성인+키즈 동시 타깃) [cite: 161]</h3>
-            [cite_start]<p>아래 시뮬레이션은 “성인 저녁/주말 + 키즈 주말” 혼합 운영을 전제로 합니다. [cite: 162] [cite_start]결제 수수료 2.5%, 고정비 250만원, 보조 멘토 비용을 포함(대표 인건비·세금 제외)했습니다. [cite: 163]</p>
+            <h3>첫 달 매출 시뮬레이션(8석, 성인+키즈 동시 타깃)</h3>
+            <p>아래 시뮬레이션은 “성인 저녁/주말 + 키즈 주말” 혼합 운영을 전제로 합니다. 결제 수수료 2.5%, 고정비 250만원, 보조 멘토 비용을 포함(대표 인건비·세금 제외)했습니다.</p>
             <ul>
-                [cite_start]<li>보수: 스프린트 0, 원데이·키즈 소수 운영 [cite: 164]</li>
-                [cite_start]<li>기준: 스프린트 1코호트(3명) + 원데이/키즈를 주당 2~3회 운영 [cite: 165]</li>
-                [cite_start]<li>공격: 스프린트 1코호트(5명) + 멤버십 + B2B 반나절 1건 [cite: 166]</li>
-            </ul>
-            [cite_start]<p>시나리오 결과(CSV 제공)는 아래 차트/링크로 확인 가능합니다. [cite: 167]</p>
-            [cite_start]<p>1개월 매출 시나리오 [cite: 168]</p>
-            [cite_start]<p>1개월 영업이익 시나리오 [cite: 169]</p>
-            <p>핵심 인사이트는 단순합니다. [cite_start]8석 소규모 구조에서는 “원데이(풀데이) 1회”도 의미가 있지만, 손익분기(BEP)를 가장 빠르게 당기는 트리거는 2주 스프린트 1코호트 입니다. [cite: 170] 이는 벤치마크에서도 3일 24시간 99만원 과정 등 고가 상품이 존재한다는 점과 정렬됩니다. [cite_start][34] [cite: 171]</p>
-
-            [cite_start]<h3>90일(3개월) P&L(기준 시나리오) [cite: 172]</h3>
-            [cite_start]<p>90일(3개월) 매출 추정 - 기준 [cite: 173]</p>
-            [cite_start]<p>다운로드 가능한 90일 P&L CSV는 부록에 제공합니다. [cite: 174]</p>
-
-            [cite_start]<h3>단위경제(Unit economics) 요약 [cite: 175]</h3>
-            [cite_start]<p>여기서 “단위경제”는 좌석 1개를 채웠을 때의 기여이익 이 아니라, 운영 현실에 맞춰 “세션 1회” 기준으로 보는 편이 실무적입니다(좌석 수가 작기 때문). [cite: 176]</p>
-            <ul>
-                [cite_start]<li>성인 풀 데이(5h): 5명 기준, 세션 1회당 공헌이익이 고정비를 빠르게 상쇄합니다(상세 산식은 CSV 입력값으로 조정 가능). [cite: 177]</li>
-                [cite_start]<li>2주 스프린트: 3~4명만 되어도 월 고정비의 상당 부분을 커버할 수 있는 설계가 가능합니다(다만 ‘완성’을 보장하기 위한 멘토 비용은 필수). [cite: 178]</li>
-                [cite_start]<li>키즈 2일 캠프: 1회 행사로 캐시아웃(현금 유입)이 크고, 맘카페/리뷰 확산에 유리하므로 “월 1회”만으로도 마케팅 효과가 큽니다. [cite: 179]</li>
+                <li><strong>보수:</strong> 스프린트 0, 원데이·키즈 소수 운영</li>
+                <li><strong>기준:</strong> 스프린트 1코호트(3명) + 원데이/키즈를 주당 2~3회 운영</li>
+                <li><strong>공격:</strong> 스프린트 1코호트(5명) + 멤버십 + B2B 반나절 1건</li>
             </ul>
 
-            [cite_start]<h3>다운로드(편집 가능한 CSV/결과표) [cite: 180]</h3>
+            <div class="metrics-grid" style="background: #f8fafc; padding: 1.5rem; border-radius:12px; border:1px solid var(--border);">
+                <div style="text-align:center;">
+                    <div style="font-size:0.9rem; color:var(--text-muted);">1개월 매출 목표 (기준 시나리오)</div>
+                    <div style="font-size:2rem; font-weight:800; color:#10b981;">₩ 8,025,000</div>
+                </div>
+                <div style="text-align:center; border-left:1px solid var(--border);">
+                    <div style="font-size:0.9rem; color:var(--text-muted);">1개월 영업이익 (기준 시나리오)</div>
+                    <div style="font-size:2rem; font-weight:800; color:var(--accent);">₩ 3,718,000</div>
+                </div>
+            </div>
+
+            <p>핵심 인사이트는 단순합니다. 8석 소규모 구조에서는 “원데이(풀데이) 1회”도 의미가 있지만, 손익분기(BEP)를 가장 빠르게 당기는 트리거는 <strong>2주 스프린트 1코호트</strong> 입니다. 이는 벤치마크에서도 3일 24시간 99만원 과정 등 고가 상품이 존재한다는 점과 정렬됩니다. [cite_start]<a href="#src-34" class="cite-badge">[cite: 34]</a></p>
+
+            <h3>단위경제(Unit economics) 요약</h3>
+            <p>여기서 “단위경제”는 <strong>좌석 1개를 채웠을 때의 기여이익</strong>이 아니라, 운영 현실에 맞춰 “세션 1회” 기준으로 보는 편이 실무적입니다(좌석 수가 작기 때문).</p>
             <ul>
-                [cite_start]<li>시나리오 입력값 CSV [cite: 181]</li>
-                [cite_start]<li>첫 달 시나리오 결과 CSV [cite: 182]</li>
-                [cite_start]<li>90일(3개월) P&L CSV [cite: 183]</li>
+                <li><strong>성인 풀 데이(5h):</strong> 5명 기준, 세션 1회당 공헌이익이 고정비를 빠르게 상쇄합니다(상세 산식은 CSV 입력값으로 조정 가능).</li>
+                <li><strong>2주 스프린트:</strong> 3~4명만 되어도 월 고정비의 상당 부분을 커버할 수 있는 설계가 가능합니다(다만 ‘완성’을 보장하기 위한 멘토 비용은 필수).</li>
+                <li><strong>키즈 2일 캠프:</strong> 1회 행사로 캐시아웃(현금 유입)이 크고, 맘카페/리뷰 확산에 유리하므로 “월 1회”만으로도 마케팅 효과가 큽니다.</li>
             </ul>
+
+            <h3>다운로드(편집 가능한 CSV/결과표)</h3>
+            <div style="margin-top: 1rem;">
+                <a href="#" class="btn-download"><i class="fa-solid fa-file-csv"></i> 시나리오 입력값 CSV</a>
+                <a href="#" class="btn-download"><i class="fa-solid fa-file-csv"></i> 첫 달 시나리오 결과 CSV</a>
+                <a href="#" class="btn-download"><i class="fa-solid fa-file-csv"></i> 90일(3개월) P&L CSV</a>
+            </div>
         </section>
 
         <section id="operation">
-            [cite_start]<h2>운영·스태핑·품질관리 [cite: 184]</h2>
+            <h2><i class="fa-solid fa-gears"></i> 운영·스태핑·품질관리</h2>
             
-            [cite_start]<h3>대표 비코딩(Producer) 구조를 성립시키는 운영 원칙 [cite: 185]</h3>
-            [cite_start]<p>대표가 코딩을 하지 않으면 “기술력” 대신 “프로세스 품질”이 성패를 좌우합니다. [cite: 186] [cite_start]즉, 운영 KPI는 (i) 요구정의 정확도(PRD), (ii) 범위관리(Scope), (iii) 테스트/검증, (iv) 결과물 전달(DoD) 입니다. [cite: 187]</p>
+            <h3>대표 비코딩(Producer) 구조를 성립시키는 운영 원칙</h3>
+            <p>대표가 코딩을 하지 않으면 “기술력” 대신 “프로세스 품질”이 성패를 좌우합니다. 즉, 운영 KPI는 <strong>(i) 요구정의 정확도(PRD), (ii) 범위관리(Scope), (iii) 테스트/검증, (iv) 결과물 전달(DoD)</strong> 입니다.</p>
 
-            [cite_start]<h3>Gate0/1/2 필터링(클레임·환불 선제 차단) [cite: 188]</h3>
+            <h3>Gate0/1/2 필터링(클레임·환불 선제 차단)</h3>
             <ul>
-                [cite_start]<li>Gate0: 유료 체험(90분) 에서 “PRD 1장 + 미니 데모”가 안 나오면 고가 상품 판매를 중단합니다. [cite: 189]</li>
-                [cite_start]<li>Gate1: 스프린트 신청자는 “사전 과제(설문+데이터/계정 준비)” 미제출 시 자동 보류. [cite: 190]</li>
-                [cite_start]<li>Gate2: 스프린트 1주차 종료 시 “End-to-End 데모”가 없으면 범위를 축소(필수 흐름만)하여 2주차에는 반드시 데모가 나오게 합니다. [cite: 191]</li>
+                <li><strong>Gate0:</strong> 유료 체험(90분) 에서 “PRD 1장 + 미니 데모”가 안 나오면 고가 상품 판매를 중단합니다.</li>
+                <li><strong>Gate1:</strong> 스프린트 신청자는 “사전 과제(설문+데이터/계정 준비)” 미제출 시 자동 보류.</li>
+                <li><strong>Gate2:</strong> 스프린트 1주차 종료 시 “End-to-End 데모”가 없으면 범위를 축소(필수 흐름만)하여 2주차에는 반드시 데모가 나오게 합니다.</li>
             </ul>
-            [cite_start]<p>이는 한국소비자원의 분쟁 기준이 “사전 합의/고지”를 전제로 작동한다는 점과, 분쟁 시 입증 책임이 실무적으로 사업자에게 불리하게 작동할 수 있다는 점을 고려한 리스크 컨트롤입니다. [cite: 192] [cite_start][46] [cite: 193]</p>
+            <p>이는 한국소비자원의 분쟁 기준이 “사전 합의/고지”를 전제로 작동한다는 점과, 분쟁 시 입증 책임이 실무적으로 사업자에게 불리하게 작동할 수 있다는 점을 고려한 리스크 컨트롤입니다. [cite_start]<a href="#src-46" class="cite-badge">[cite: 46]</a></p>
 
-            [cite_start]<h3>멘토 비율과 역할 정의 [cite: 194]</h3>
-            <table>
-                <thead>
-                    <tr>
-                        [cite_start]<th>세션 [cite: 195]</th>
-                        [cite_start]<th>권장 멘토 비율 [cite: 195]</th>
-                        [cite_start]<th>주 역할 [cite: 195]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        [cite_start]<td>성인 라이트/풀 [cite: 195]</td>
-                        [cite_start]<td>1:6 내외 [cite: 195]</td>
-                        [cite_start]<td>막힘 제거(계정/권한/API/디버깅) [cite: 195]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>성인 스프린트 [cite: 195]</td>
-                        [cite_start]<td>1:4 내외 [cite: 195]</td>
-                        [cite_start]<td>2주 내 완성 보장(리스크 제거) [cite: 195]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>키즈 게임잼 [cite: 195]</td>
-                        [cite_start]<td>보조 1명 필수 권장 [cite: 195]</td>
-                        [cite_start]<td>"안전/통제, 기기 세팅, 촬영/공유" [cite: 195]</td>
-                    </tr>
-                </tbody>
-            </table>
-            [cite_start]<p>대표(Producer/PM)는 “요구정의/우선순위/QA/데모 스토리”를 담당하고, 멘토는 “기술적 병목 제거”만 담당하게 분리해야 운영이 스케일됩니다. [cite: 196]</p>
+            <h3>멘토 비율과 역할 정의</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>세션</th>
+                            <th>권장 멘토 비율</th>
+                            <th>주 역할</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr><td>성인 라이트/풀</td><td>1:6 내외</td><td>막힘 제거(계정/권한/API/디버깅)</td></tr>
+                        <tr><td>성인 스프린트</td><td>1:4 내외</td><td>2주 내 완성 보장(리스크 제거)</td></tr>
+                        <tr><td>키즈 게임잼</td><td>보조 1명 필수 권장</td><td>안전/통제, 기기 세팅, 촬영/공유</td></tr>
+                    </tbody>
+                </table>
+            </div>
+            <p>대표(Producer/PM)는 “요구정의/우선순위/QA/데모 스토리”를 담당하고, 멘토는 “기술적 병목 제거”만 담당하게 분리해야 운영이 스케일됩니다.</p>
 
-            [cite_start]<h3>오픈데이 체크리스트(현장 운영) [cite: 197]</h3>
+            <h3>오픈데이 체크리스트(현장 운영)</h3>
             <ul>
-                [cite_start]<li>네트워크: Wi‑Fi(5GHz) + 예비 핫스팟 [cite: 198]</li>
-                [cite_start]<li>디스플레이: TV/모니터 + HDMI/무선 공유 [cite: 199]</li>
-                [cite_start]<li>전원: 멀티탭/USB‑C/라이트닝 [cite: 200]</li>
-                [cite_start]<li>안전/보안: 키즈 촬영·개인정보 동의서(부모 서명), 출입 동선 [cite: 201]</li>
-                [cite_start]<li>결제: 현장 결제 링크(모바일) + 계좌이체 안내 + 현금영수증 발급 프로세스(요청/자진발급) [16] [cite: 202]</li>
-                [cite_start]<li>템플릿: PRD/프롬프트/버그리포트/배포 체크리스트 QR 배포 [cite: 203]</li>
+                <li><strong>네트워크:</strong> Wi‑Fi(5GHz) + 예비 핫스팟</li>
+                <li><strong>디스플레이:</strong> TV/모니터 + HDMI/무선 공유</li>
+                <li><strong>전원:</strong> 멀티탭/USB‑C/라이트닝</li>
+                <li><strong>안전/보안:</strong> 키즈 촬영·개인정보 동의서(부모 서명), 출입 동선</li>
+                [cite_start]<li><strong>결제:</strong> 현장 결제 링크(모바일) + 계좌이체 안내 + 현금영수증 발급 프로세스(요청/자진발급) <a href="#src-16" class="cite-badge">[cite: 16]</a></li>
+                <li><strong>템플릿:</strong> PRD/프롬프트/버그리포트/배포 체크리스트 QR 배포</li>
             </ul>
         </section>
 
         <section id="brand">
-            [cite_start]<h2>브랜드·런칭·세일즈·결제 [cite: 204]</h2>
+            <h2><i class="fa-solid fa-rocket"></i> 브랜드·런칭·세일즈·결제</h2>
             
-            [cite_start]<h3>브랜드·네이밍 전략: “AI는 라인업, 브랜드는 방식” [cite: 205]</h3>
-            [cite_start]<p>사용자 요구(“AI를 강조하기엔 추후 불확실”)를 반영해, 브랜드는 기술이 아니라 “제작 방식(완성하는 스튜디오)”에 고정하고, AI는 라인업/서브타이틀에서 가변적으로 노출하는 구조가 안전합니다. [cite: 206]</p>
-            [cite_start]<p>권장 아키텍처: - 마스터 브랜드: MADISON Studio - 라인업(가변): MADISON Builder Sprint , MADISON Automation Lab , MADISON Kids Game Jam - 외부 카피: “배우는 곳이 아니라, 완성하는 스튜디오” [cite: 207]</p>
-            [cite_start]<p>이렇게 하면 기술 트렌드가 바뀌어도 브랜드 코어는 유지되고, 라인업만 교체하면 됩니다. [cite: 208]</p>
+            <h3>브랜드·네이밍 전략: “AI는 라인업, 브랜드는 방식”</h3>
+            <p>사용자 요구(“AI를 강조하기엔 추후 불확실”)를 반영해, 브랜드는 기술이 아니라 “제작 방식(완성하는 스튜디오)”에 고정하고, AI는 라인업/서브타이틀에서 가변적으로 노출하는 구조가 안전합니다.</p>
+            <div class="callout">
+                <p><strong>권장 아키텍처:</strong></p>
+                <ul>
+                    <li>마스터 브랜드: <strong>MADISON Studio</strong></li>
+                    <li>라인업(가변): MADISON <strong>Builder Sprint</strong>, MADISON <strong>Automation Lab</strong>, MADISON <strong>Kids Game Jam</strong></li>
+                    <li>외부 카피: “배우는 곳이 아니라, 완성하는 스튜디오”</li>
+                </ul>
+            </div>
+            <p>이렇게 하면 기술 트렌드가 바뀌어도 브랜드 코어는 유지되고, 라인업만 교체하면 됩니다.</p>
 
-            [cite_start]<h3>런칭 전략: Founding Builders(리뷰 기반) + 지역 채널 [cite: 209]</h3>
-            <p>Founding Builders는 “초기 케이스북 확보”가 목적입니다. [cite_start]할인/리워드 제공 시 경제적 이해관계 표시가 요구되며, 공정위 안내서 및 심사지침은 표시문구 위치/명확성 원칙을 제시합니다. [cite: 210] [cite_start][47] [cite: 211]</p>
-            [cite_start]<p>Founding Builders 운영안(첫 30명): - 혜택: 유료 체험 무료 또는 라이트/풀데이 20~30% 할인 - 조건: 후기 1건 + 결과물 데모(스크린샷/영상) 공유 + 표시문구 준수 - 표시문구(한국어 템플릿, 제목/첫 줄 권장):- ※ 본 후기는 할인(또는 혜택)을 제공받아 작성했습니다. [cite: 212] [cite_start][22] [cite: 213]</p>
-            [cite_start]<p>지역 채널 믹스(송도·1공구 실전형): - 당근(지역 광고/동네생활): “주말 게임잼”, “퇴근 후 3시간 자동화” 메시지- 맘카페: 키즈 게임잼 결과물(링크/영상) 중심- 네이버 블로그/플레이스: “송도 자동화”, “송도 게임잼” 검색형- LinkedIn: B2B 파일럿 케이스(ROI 카드)로 리드 확보 [cite: 214]</p>
+            <h3>런칭 전략: Founding Builders(리뷰 기반) + 지역 채널</h3>
+            <p>Founding Builders는 “초기 케이스북 확보”가 목적입니다. 할인/리워드 제공 시 경제적 이해관계 표시가 요구되며, 공정위 안내서 및 심사지침은 표시문구 위치/명확성 원칙을 제시합니다. [cite_start]<a href="#src-47" class="cite-badge">[cite: 47]</a></p>
+            
+            <p><strong>Founding Builders 운영안(첫 30명):</strong></p>
+            <ul>
+                <li>혜택: 유료 체험 무료 또는 라이트/풀데이 20~30% 할인</li>
+                <li>조건: 후기 1건 + 결과물 데모(스크린샷/영상) 공유 + 표시문구 준수</li>
+                [cite_start]<li>표시문구(한국어 템플릿, 제목/첫 줄 권장): <code>※ 본 후기는 할인(또는 혜택)을 제공받아 작성했습니다.</code> <a href="#src-22" class="cite-badge">[cite: 22]</a></li>
+            </ul>
 
-            [cite_start]<h3>랜딩페이지 와이어프레임(샘플) [cite: 215]</h3>
-            <div class="image-placeholder">
-                            </div>
-            [cite_start]<p>MADISON Studio 랜딩페이지 와이어프레임 [cite: 216]</p>
-            [cite_start]<p>샘플 카피(요약): - 성인: “3시간 안에 내 업무 자동화 1개를 ‘작동’시키고 가져갑니다(BYOD).” [cite: 217] - 키즈: “우리 아이가 만든 게임을 링크/영상으로 집에 가져갑니다(원데이/캠프).” - [cite_start]B2B: “2~3시간 파일럿으로 반복 업무 1개를 PoC로 전환합니다(문서/운영 포함).” [cite: 218]</p>
+            <p><strong>지역 채널 믹스(송도·1공구 실전형):</strong></p>
+            <ul>
+                <li><strong>당근(지역 광고/동네생활):</strong> “주말 게임잼”, “퇴근 후 3시간 자동화” 메시지</li>
+                <li><strong>맘카페:</strong> 키즈 게임잼 결과물(링크/영상) 중심</li>
+                <li><strong>네이버 블로그/플레이스:</strong> “송도 자동화”, “송도 게임잼” 검색형</li>
+                <li><strong>LinkedIn:</strong> B2B 파일럿 케이스(ROI 카드)로 리드 확보</li>
+            </ul>
 
-            [cite_start]<h3>결제 인프라: 국내 PG 우선, Stripe/미국 라우트는 옵션 [cite: 219]</h3>
-            <p>즉시 운영 단계에서는 국내 PG가 가장 빠릅니다. [cite_start]예를 들어 토스페이먼츠[48]는 가입비/연관리비, 카드 수수료(예: 3.4%), 평균 정산 주기(평균 5일 이내)를 공개합니다. [cite: 220] [49]개발 리소스가 있다면 포트원[50] 등의 통합 결제 인프라를 고려할 수 있으며, 개발자 문서에서 SDK 기반 연동을 안내합니다. [cite_start][51] [cite: 221]</p>
-            [cite_start]<p>Stripe의 경우 “Global availability” 페이지에서 지원 국가/지역 목록을 제공하며, 한국 내에서 Stripe 계정 개설 가능 여부는 이 목록과 연동됩니다. [cite: 222] [cite_start][52] 미국 법인 설립을 통해 Stripe를 쓰는 방식으로는 Stripe Atlas가 있으며, Atlas가 제공하는 기능(델라웨어 법인 설립, EIN 등)을 명시합니다. [cite: 223] [cite_start][53]다만 Atlas/미국 라우트는 세무·회계·환전·규제 비용이 커지므로, 본 사업의 “최단기 현금흐름” 목표와는 충돌할 가능성이 높아 초기 90일은 국내 결제 우선 을 권장합니다. [cite: 224] [cite_start][54] [cite: 225]</p>
+            <h3>랜딩페이지 와이어프레임(샘플)</h3>
+            
+            <div class="mockup-window">
+                <div class="mockup-header">
+                    <div class="mockup-dot"></div>
+                    <div class="mockup-dot"></div>
+                    <div class="mockup-dot"></div>
+                </div>
+                <div class="mockup-body">
+                    <div class="mockup-hero">
+                        <h1>MADISON Studio</h1>
+                        <p style="color:#cbd5e1; font-size:1.2rem;">배우는 곳이 아니라, 완성하는 스튜디오</p>
+                    </div>
+                    <div class="mockup-features">
+                        <div class="mockup-feature-card">
+                            <i class="fa-solid fa-user-tie" style="font-size:2rem; color:var(--accent); margin-bottom:1rem;"></i>
+                            <h4 style="margin:0;">성인 트랙</h4>
+                            <p style="font-size:0.9rem; margin-top:0.5rem;">"3시간 안에 내 업무 자동화 1개를 '작동'시키고 가져갑니다(BYOD)."</p>
+                        </div>
+                        <div class="mockup-feature-card">
+                            <i class="fa-solid fa-gamepad" style="font-size:2rem; color:var(--success); margin-bottom:1rem;"></i>
+                            <h4 style="margin:0;">키즈 트랙</h4>
+                            <p style="font-size:0.9rem; margin-top:0.5rem;">"우리 아이가 만든 게임을 링크/영상으로 집에 가져갑니다(원데이/캠프)."</p>
+                        </div>
+                        <div class="mockup-feature-card">
+                            <i class="fa-solid fa-building" style="font-size:2rem; color:var(--warning); margin-bottom:1rem;"></i>
+                            <h4 style="margin:0;">B2B 트랙</h4>
+                            <p style="font-size:0.9rem; margin-top:0.5rem;">"2~3시간 파일럿으로 반복 업무 1개를 PoC로 전환합니다(문서/운영 포함)."</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-            [cite_start]<h3>환불 정책 문구(한국 소비자 기준 준수) [cite: 226]</h3>
-            [cite_start]<p>한국소비자원은 분쟁해결기준의 적용원칙과, 다른 기준이 더 유리하면 그 기준 우선 적용 원칙을 명시합니다. [cite: 227] [18] 또한 실제 분쟁조정 사례에서 “환급금 산정 기준은 실제 결제금액”이 타당하다고 판단한 바 있습니다. [cite_start][19] [cite: 228]</p>
-            [cite_start]<p>권장 환불 정책(요약 문구): - “환불 산정 기준 금액은 실제 결제금액 을 기준으로 합니다.” [cite: 229] [cite_start][19]- “진행된 회차/제공된 자료/좌석 확보 비용을 공제한 후 환불합니다.”- “분쟁 발생 시 소비자분쟁해결기준 등 관련 기준에 따라 조정될 수 있습니다.” [cite: 230] [cite_start][18] [cite: 231]</p>
+            <h3>결제 인프라: 국내 PG 우선, Stripe/미국 라우트는 옵션</h3>
+            [cite_start]<p>즉시 운영 단계에서는 국내 PG가 가장 빠릅니다. 예를 들어 토스페이먼츠<a href="#src-48" class="cite-badge">[cite: 48]</a>는 가입비/연관리비, 카드 수수료(예: 3.4%), 평균 정산 주기(평균 5일 이내)를 공개합니다. [cite_start]<a href="#src-49" class="cite-badge">[cite: 49][cite_start]</a> 개발 리소스가 있다면 포트원<a href="#src-50" class="cite-badge">[cite: 50]</a> 등의 통합 결제 인프라를 고려할 수 있으며, 개발자 문서에서 SDK 기반 연동을 안내합니다. [cite_start]<a href="#src-51" class="cite-badge">[cite: 51]</a></p>
+            <p>Stripe의 경우 “Global availability” 페이지에서 지원 국가/지역 목록을 제공하며, 한국 내에서 Stripe 계정 개설 가능 여부는 이 목록과 연동됩니다. [cite_start]<a href="#src-52" class="cite-badge">[cite: 52]</a> 미국 법인 설립을 통해 Stripe를 쓰는 방식으로는 Stripe Atlas가 있으며, Atlas가 제공하는 기능(델라웨어 법인 설립, EIN 등)을 명시합니다. [cite_start]<a href="#src-53" class="cite-badge">[cite: 53]</a> 다만 Atlas/미국 라우트는 세무·회계·환전·규제 비용이 커지므로, 본 사업의 “최단기 현금흐름” 목표와는 충돌할 가능성이 높아 <strong>초기 90일은 국내 결제 우선</strong>을 권장합니다. [cite_start]<a href="#src-54" class="cite-badge">[cite: 54]</a></p>
+
+            <h3>환불 정책 문구(한국 소비자 기준 준수)</h3>
+            <p>한국소비자원은 분쟁해결기준의 적용원칙과, 다른 기준이 더 유리하면 그 기준 우선 적용 원칙을 명시합니다. [cite_start]<a href="#src-18" class="cite-badge">[cite: 18]</a> 또한 실제 분쟁조정 사례에서 “환급금 산정 기준은 실제 결제금액”이 타당하다고 판단한 바 있습니다. [cite_start]<a href="#src-19" class="cite-badge">[cite: 19]</a></p>
+            <div class="callout warning">
+                <p><strong>권장 환불 정책(요약 문구):</strong></p>
+                <ul>
+                    <li>“환불 산정 기준 금액은 <strong>실제 결제금액</strong>을 기준으로 합니다.” [cite_start]<a href="#src-19" class="cite-badge">[cite: 19]</a></li>
+                    <li>“진행된 회차/제공된 자료/좌석 확보 비용을 공제한 후 환불합니다.”</li>
+                    <li>“분쟁 발생 시 소비자분쟁해결기준 등 관련 기준에 따라 조정될 수 있습니다.” [cite_start]<a href="#src-18" class="cite-badge">[cite: 18]</a></li>
+                </ul>
+            </div>
         </section>
 
         <section id="risk">
-            [cite_start]<h2>리스크 매트릭스, 실행 로드맵, 부록 템플릿 [cite: 232]</h2>
+            <h2><i class="fa-solid fa-shield-halved"></i> 리스크 매트릭스, 실행 로드맵, 부록 템플릿</h2>
             
-            [cite_start]<h3>리스크 매트릭스(핵심 통제 지점) [cite: 233]</h3>
-            <table>
-                <thead>
-                    <tr>
-                        [cite_start]<th>리스크 [cite: 234]</th>
-                        [cite_start]<th>트리거 [cite: 234]</th>
-                        [cite_start]<th>통제(Controls) [cite: 234]</th>
-                        [cite_start]<th>근거 [cite: 234]</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        [cite_start]<td>학원 분류 [cite: 234]</td>
-                        [cite_start]<td>"동시간 10명, 30일 이상 과정/반복, 학습장소 제공" [cite: 234]</td>
-                        [cite_start]<td>"좌석 8 고정, 원데이/2주 단절, 공간 제공형 멤버십 금지" [cite: 234]</td>
-                        [cite_start]<td>"[1]" [cite: 234]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>민원(키즈/소음) [cite: 234]</td>
-                        [cite_start]<td>"오피스텔 소음, 안전" [cite: 234]</td>
-                        [cite_start]<td>"키즈는 주말/캠프형, 보조 인력, 촬영/동의서" [cite: 234]</td>
-                        [cite_start]<td>"[55]" [cite: 234]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>환불/클레임 [cite: 234]</td>
-                        [cite_start]<td>"기대치 과다, 산출물 미완성" [cite: 234]</td>
-                        [cite_start]<td>"Gate0/1/2, DoD 강제, 실결제금액 기준 환불" [cite: 234]</td>
-                        [cite_start]<td>"[56]" [cite: 234]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>뒷광고 리스크 [cite: 234]</td>
-                        [cite_start]<td>혜택 제공 사실 미표시 [cite: 234]</td>
-                        [cite_start]<td>"표시문구 템플릿 제공, 제목/첫 줄 노출" [cite: 234]</td>
-                        [cite_start]<td>"[22]" [cite: 234]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>결제/정산 리스크 [cite: 234]</td>
-                        [cite_start]<td>정산 지연 [cite: 234]</td>
-                        [cite_start]<td>"PG 정산주기 확인, 예비 운영자금" [cite: 234]</td>
-                        [cite_start]<td>"[49]" [cite: 234]</td>
-                    </tr>
-                    <tr>
-                        [cite_start]<td>세무 리스크 [cite: 234]</td>
-                        [cite_start]<td>무등록/누락 [cite: 234]</td>
-                        [cite_start]<td>"사업자등록(20일), 부가세 유형 관리" [cite: 234]</td>
-                        [cite_start]<td>"[57]" [cite: 234]</td>
-                    </tr>
-                </tbody>
-            </table>
+            <h3>리스크 매트릭스(핵심 통제 지점)</h3>
+            <div class="table-container">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>리스크</th>
+                            <th>트리거</th>
+                            <th>통제(Controls)</th>
+                            <th>근거</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        [cite_start]<tr><td>학원 분류</td><td>동시간 10명, 30일 이상 과정/반복, 학습장소 제공</td><td>좌석 8 고정, 원데이/2주 단절, 공간 제공형 멤버십 금지</td><td><a href="#src-1" class="cite-badge">[cite: 1]</a></td></tr>
+                        [cite_start]<tr><td>민원(키즈/소음)</td><td>오피스텔 소음, 안전</td><td>키즈는 주말/캠프형, 보조 인력, 촬영/동의서</td><td><a href="#src-55" class="cite-badge">[cite: 55]</a></td></tr>
+                        [cite_start]<tr><td>환불/클레임</td><td>기대치 과다, 산출물 미완성</td><td>Gate0/1/2, DoD 강제, 실결제금액 기준 환불</td><td><a href="#src-56" class="cite-badge">[cite: 56]</a></td></tr>
+                        [cite_start]<tr><td>뒷광고 리스크</td><td>혜택 제공 사실 미표시</td><td>표시문구 템플릿 제공, 제목/첫 줄 노출</td><td><a href="#src-22" class="cite-badge">[cite: 22]</a></td></tr>
+                        [cite_start]<tr><td>결제/정산 리스크</td><td>정산 지연</td><td>PG 정산주기 확인, 예비 운영자금</td><td><a href="#src-49" class="cite-badge">[cite: 49]</a></td></tr>
+                        [cite_start]<tr><td>세무 리스크</td><td>무등록/누락</td><td>사업자등록(20일), 부가세 유형 관리</td><td><a href="#src-57" class="cite-badge">[cite: 57]</a></td></tr>
+                    </tbody>
+                </table>
+            </div>
 
-            [cite_start]<h3>30/60/90/180일 로드맵과 KPI [cite: 235]</h3>
+            <h3>30/60/90/180일 로드맵과 KPI</h3>
             <ul>
-                [cite_start]<li>30일: MVP 상품 3개(체험/성인 라이트/키즈 게임잼)로 케이스 15개 확보, 좌석 점유율 40% 달성(후기 10개). [cite: 236]</li>
-                [cite_start]<li>60일: 풀 데이 + 스프린트 1코호트 런칭, 월 고정비 커버(영업이익 플러스) 안정화. [cite: 237]</li>
-                [cite_start]<li>90일: 스프린트 월 2코호트 또는 B2B 파일럿 1건 도입, “케이스북 30개”를 마케팅 자산화. [cite: 238]</li>
-                [cite_start]<li>180일: 멤버십(예약형 클리닉) 구축, 반복매출 비중 30% 목표. [cite: 239]</li>
+                <li><strong>30일:</strong> MVP 상품 3개(체험/성인 라이트/키즈 게임잼)로 케이스 15개 확보, 좌석 점유율 40% 달성(후기 10개).</li>
+                <li><strong>60일:</strong> 풀 데이 + 스프린트 1코호트 런칭, 월 고정비 커버(영업이익 플러스) 안정화.</li>
+                <li><strong>90일:</strong> 스프린트 월 2코호트 또는 B2B 파일럿 1건 도입, “케이스북 30개”를 마케팅 자산화.</li>
+                <li><strong>180일:</strong> 멤버십(예약형 클리닉) 구축, 반복매출 비중 30% 목표.</li>
             </ul>
             
-            [cite_start]<p>90일 타임라인(mermaid): [cite: 240]</p>
-            <div class="image-placeholder">
-                            </div>
-            <div class="mermaid">
-            timeline
-              title MADISON Studio 90일 런치 타임라인(송도 1공구)
-              section 0~30일 (MVP)
-                사업자/결제/영수증 SOP 확정 : 1, 7
-                MVP 3상품 오픈(체험/성인 라이트/키즈 잼) : 8, 14
-                Founding Builders 30명 모집(후기 템플릿 포함) : 10, 25
-              section 30~60일 (확장)
-                성인 풀 데이 도입 : 35, 45
-                스프린트 1코호트 런칭(정원 4~6) : 40, 60
-                케이스북 20개(영상/링크) 축적 : 35, 60
-              section 60~90일 (고단가)
-                B2B 파일럿 제안/계약 1건 : 70, 90
-                데모데이 월 1회 정례화 : 85, 90
+            <p><strong>90일 타임라인:</strong></p>
+            <div class="mermaid" style="background: white; padding: 1rem; border-radius: 8px; border: 1px solid var(--border); overflow-x: auto;">
+timeline
+  title MADISON Studio 90일 런치 타임라인(송도 1공구)
+  section 0~30일 (MVP)
+    사업자/결제/영수증 SOP 확정 : 1, 7
+    MVP 3상품 오픈(체험/성인 라이트/키즈 잼) : 8, 14
+    Founding Builders 30명 모집(후기 템플릿 포함) : 10, 25
+  section 30~60일 (확장)
+    성인 풀 데이 도입 : 35, 45
+    스프린트 1코호트 런칭(정원 4~6) : 40, 60
+    케이스북 20개(영상/링크) 축적 : 35, 60
+  section 60~90일 (고단가)
+    B2B 파일럿 제안/계약 1건 : 70, 90
+    데모데이 월 1회 정례화 : 85, 90
             </div>
-            [cite_start]<p>[cite: 241] [cite_start][cite: 242]</p>
 
-            [cite_start]<h3>부록 템플릿(바로 복사해 쓰는 초안) [cite: 243]</h3>
-            [cite_start]<p>아래 템플릿은 “학원 수강계약서” 톤이 아니라 “워크숍/컨설팅(제작 동행) 서비스” 톤으로 구성했습니다. [cite: 244]</p>
+            <h3 style="margin-top: 3rem;">부록 템플릿(바로 복사해 쓰는 초안)</h3>
+            <p>아래 템플릿은 “학원 수강계약서” 톤이 아니라 “워크숍/컨설팅(제작 동행) 서비스” 톤으로 구성했습니다.</p>
             
-            [cite_start]<h4>서비스 이용계약(요약) [cite: 245]</h4>
-            <div class="pre-block">[서비스 성격]
+            <h4>서비스 이용계약(요약)</h4>
+            <div class="template-box">[서비스 성격]
 본 프로그램은 강의형 교습이 아니라, 참가자의 목표 달성을 위한 워크숍/프로젝트 컨설팅 및 동반작업 서비스입니다.
 특정 결과(취업, 수익, 투자 성과)를 보장하지 않습니다.
+
 [최소 산출물(DoD)]
 (원데이) PRD 1장, 프롬프트 시트, 데모(링크 또는 영상) 1개, 운영 체크리스트 v0
 (스프린트) MVP 1개, KPI 1개, 운영/배포 체크리스트, 데모데이 자료
+
 [준수사항]
 개인정보/회사 기밀/저작권 위반 소지가 있는 자료 입력 금지.
 성인 과정은 개인 노트북 지참(BYOD)을 원칙으로 하며, 환경(계정/권한/네트워크)에 따라 일부 기능이 제한될 수 있습니다.
+
 [환불]
 환불 산정 기준 금액은 ‘실제 결제금액’이며, 진행된 회차/제공된 자료/좌석 확보 비용을 공제하여 환불합니다.
-[cite_start]분쟁 발생 시 소비자분쟁해결기준 등 관련 기준에 따라 조정될 수 있습니다. [cite: 246]</div>
+분쟁 발생 시 소비자분쟁해결기준 등 관련 기준에 따라 조정될 수 있습니다.</div>
 
-            [cite_start]<h4>후기 표시문구 템플릿(경제적 이해관계 표시) [cite: 247]</h4>
-            [cite_start]<div class="pre-block">※ 본 후기는 할인/혜택을 제공받아 작성한 후기입니다. [cite: 248]</div>
+            <h4>후기 표시문구 템플릿(경제적 이해관계 표시)</h4>
+            <div class="template-box">※ 본 후기는 할인/혜택을 제공받아 작성한 후기입니다.</div>
 
-            [cite_start]<h4>PRD 1장 템플릿 [cite: 249]</h4>
-            <div class="pre-block">문제(현재) / 사용자 / 목표(성공기준, KPI 1개) / 입력 / 출력 / 예외 케이스 / 제약(시간, 예산, 권한)
-[cite_start]데모 시나리오(30초) / 운영(로그·백업·롤백) / 다음 단계 [cite: 250]</div>
+            <h4>PRD 1장 템플릿</h4>
+            <div class="template-box">문제(현재) / 사용자 / 목표(성공기준, KPI 1개) / 입력 / 출력 / 예외 케이스 / 제약(시간, 예산, 권한)
+데모 시나리오(30초) / 운영(로그·백업·롤백) / 다음 단계</div>
 
-            [cite_start]<h4>프롬프트 시트 템플릿 [cite: 251]</h4>
-            [cite_start]<div class="pre-block">역할(당신은 ~) / 컨텍스트 / 제약(금지/필수) / 출력 포맷 / 테스트케이스 3개 / 실패 시 디버깅 질문 [cite: 252]</div>
+            <h4>프롬프트 시트 템플릿</h4>
+            <div class="template-box">역할(당신은 ~) / 컨텍스트 / 제약(금지/필수) / 출력 포맷 / 테스트케이스 3개 / 실패 시 디버깅 질문</div>
 
-            [cite_start]<h4>버그 리포트 템플릿 [cite: 253]</h4>
-            [cite_start]<div class="pre-block">재현 절차 / 기대 결과 / 실제 결과 / 로그/스크린샷 / 우선순위 / 임시 해결책 [cite: 254]</div>
+            <h4>버그 리포트 템플릿</h4>
+            <div class="template-box">재현 절차 / 기대 결과 / 실제 결과 / 로그/스크린샷 / 우선순위 / 임시 해결책</div>
 
-            [cite_start]<h4>배포·운영 체크리스트 [cite: 255]</h4>
-            [cite_start]<div class="pre-block">권한(최소권한) / 비밀키 보관 / 로그 / 백업 / 롤백 / 사용자 안내문 / 운영 담당자 인수인계 [cite: 256]</div>
+            <h4>배포·운영 체크리스트</h4>
+            <div class="template-box">권한(최소권한) / 비밀키 보관 / 로그 / 백업 / 롤백 / 사용자 안내문 / 운영 담당자 인수인계</div>
 
-            [cite_start]<h3>우선순위 체크리스트(런칭 전 7개) [cite: 257]</h3>
-            <p>1) 좌석 8 고정(동시간 9 이하)과 30일 미만 상품 정책을 운영규정에 명문화 [1]
-            2) 사업자등록(개시 20일 이내) 및 부가세 유형 선택 [57]
-            3) 환불 규정(실결제금액 기준)과 고지 위치 통일 [56]
-            4) Founding Builders 후기 표시문구 템플릿 배포 [22]
-            5) Gate0/1/2 문서화(체험→고가 판매 기준)
-            6) 키즈 동의서(촬영/개인정보) 및 안전 운영
-            [cite_start]7) 상권/경쟁 맵핑: 소상공인365 + 인천 동부교육지원청 학원 현황 데이터로 밀집도 확인 [58] [cite: 258]</p>
+            <h3>우선순위 체크리스트(런칭 전 7개)</h3>
+            <ol>
+                [cite_start]<li>좌석 8 고정(동시간 9 이하)과 30일 미만 상품 정책을 운영규정에 명문화 <a href="#src-1" class="cite-badge">[cite: 1]</a></li>
+                [cite_start]<li>사업자등록(개시 20일 이내) 및 부가세 유형 선택 <a href="#src-57" class="cite-badge">[cite: 57]</a></li>
+                [cite_start]<li>환불 규정(실결제금액 기준)과 고지 위치 통일 <a href="#src-56" class="cite-badge">[cite: 56]</a></li>
+                [cite_start]<li>Founding Builders 후기 표시문구 템플릿 배포 <a href="#src-22" class="cite-badge">[cite: 22]</a></li>
+                <li>Gate0/1/2 문서화(체험→고가 판매 기준)</li>
+                <li>키즈 동의서(촬영/개인정보) 및 안전 운영</li>
+                [cite_start]<li>상권/경쟁 맵핑: 소상공인365 + 인천 동부교육지원청 학원 현황 데이터로 밀집도 확인 <a href="#src-58" class="cite-badge">[cite: 58]</a></li>
+            </ol>
         </section>
 
-        <section id="sources">
-            [cite_start]<h2>우선순위 출처 목록(핵심 근거) [cite: 259]</h2>
-            <ul>
-                [cite_start]<li>학원 정의/요건(10명·30일·학습장소 제공): [1] [cite: 260]</li>
-                [cite_start]<li>송도 인구(공식 통계): [2] [cite: 261]</li>
-                [cite_start]<li>IFEZ 사업체/고용 지표(공식 보도자료): [4] [cite: 262]</li>
-                [cite_start]<li>사업자등록(20일)·부가세 기준: [57] [cite: 263]</li>
-                [cite_start]<li>현금영수증 의무발행업종 안내: [16] [cite: 264]</li>
-                [cite_start]<li>후기/광고 표시(경제적 이해관계): [47] [cite: 265]</li>
-                [cite_start]<li>소비자분쟁해결기준 및 환불 사례: [46] [cite: 266]</li>
-                [cite_start]<li>가격 벤치마크(국내 교육사): [59] [cite: 267]</li>
+        <section id="sources" style="background: #f8fafc;">
+            <h2><i class="fa-solid fa-book-bookmark"></i> 우선순위 출처 목록(핵심 근거)</h2>
+            <ul style="font-size:0.95rem; color:var(--text-muted); word-break: break-all;">
+                [cite_start]<li>학원 정의/요건(10명·30일·학습장소 제공): <a href="#src-1">[cite: 1]</a></li>
+                [cite_start]<li>송도 인구(공식 통계): <a href="#src-2">[cite: 2]</a></li>
+                [cite_start]<li>IFEZ 사업체/고용 지표(공식 보도자료): <a href="#src-4">[cite: 4]</a></li>
+                [cite_start]<li>사업자등록(20일)·부가세 기준: <a href="#src-57">[cite: 57]</a></li>
+                [cite_start]<li>현금영수증 의무발행업종 안내: <a href="#src-16">[cite: 16]</a></li>
+                [cite_start]<li>후기/광고 표시(경제적 이해관계): <a href="#src-47">[cite: 47]</a></li>
+                [cite_start]<li>소비자분쟁해결기준 및 환불 사례: <a href="#src-46">[cite: 46]</a></li>
+                [cite_start]<li>가격 벤치마크(국내 교육사): <a href="#src-59">[cite: 59]</a></li>
             </ul>
             
-            [cite_start]<p><cite>[1] [7] [8] 학원의 설립ㆍ운영 및 과외교습 [cite: 268] [cite_start]<br>https://easylaw.go.kr/CSP/CnpClsMain.laf?ccfNo=1&cciNo=1&cnpClsNo=1&csmSeq=1140&utm_source=chatgpt.com [cite: 269]</cite></p>
-            [cite_start]<p><cite>[2] https://www.ifez.go.kr/main/intro/stats/population.do [cite: 270] [cite_start][cite: 271]</cite></p>
-            [cite_start]<p><cite>[3] [21] [47] 경제적 이해관계 표시 안내서 개정본 배포 [cite: 272] [cite_start]<br>https://www.ftc.go.kr/www/selectBbsNttView.do?bordCd=3&key=12&nttSn=46709&pageIndex=1&pageUnit=10&searchCnd=all&searchCtgry=01%2C02&utm_source=chatgpt.com [cite: 273]</cite></p>
-            [cite_start]<p><cite>[4] https://www.ifez.go.kr/main/pst/view.do?pst_id=noti03&pst_sn=669134 [cite: 274] [cite_start][cite: 275]</cite></p>
-            [cite_start]<p><cite>[5] [16] [17] 현금영수증∙신용카드 - 현금영수증발급의무 [cite: 276] [cite_start]<br>https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=7796&mi=2471&utm_source=chatgpt.com [cite: 277]</cite></p>
-            [cite_start]<p><cite>[6] [28] [59] [오프라인] 하루 19가지 실습으로 정복하는 AI 엑셀 업무 ... [cite: 278] [cite_start]<br>https://fastcampus.co.kr/b2b_camp_excelautomation?utm_source=chatgpt.com [cite: 279]</cite></p>
-            [cite_start]<p><cite>[9] [41] https://scratch.mit.edu/help/studio/tips/howto/hoc-8/ [cite: 280] [cite_start][cite: 281]</cite></p>
-            [cite_start]<p><cite>[10] https://www.law.go.kr/LSW/flDownload.do?flNm=%5B%EB%B3%84%ED%91%9C+2%5D+%EA%B5%90%EC%9C%A1%EC%A7%80%EC%9B%90%EC%B2%AD%EC%9D%98+%EB%AA%85%EC%B9%AD%C2%B7%EC%9C%84%EC%B9%98+%EB%B0%8F+%EA%B4%80%ED%95%A0%EA%B5%AC%EC%97%AD%28%EC%A0%9C5%EC%A1%B0%EC%A0%9C1%ED%95%AD+%EA%B4%80%EB%A0%A8%29%0A&flSeq=27769160 [cite: 282] [cite_start][cite: 283]</cite></p>
-            [cite_start]<p><cite>[11] 개인과외교습자 신고대상 - 인천광역시북부교육지원청 [cite: 284] [cite_start]<br>https://bukbu.ice.go.kr/ibuilder.do?menu_idx=343&per_menu_idx=342&tabCnt=2&utm_source=chatgpt.com [cite: 285]</cite></p>
-            [cite_start]<p><cite>[12] [25] https://www.goehs.kr/goehs/cm/cntnts/cntntsView.do?cntntsId=2275&mi=18473 [cite: 286] [cite_start][cite: 287]</cite></p>
-            [cite_start]<p><cite>[13] [23] [48] [57] 국세정책/제도 - 사업자등록 안내 - 사업자등록 안내 [cite: 288] [cite_start]<br>https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=7776&mi=2443&utm_source=chatgpt.com [cite: 289]</cite></p>
-            [cite_start]<p><cite>[14] https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=7893&mi=6457 [cite: 290] [cite_start][cite: 291]</cite></p>
-            [cite_start]<p><cite>[15] 개인신고안내 - 부가가치세 - 기본정보 [cite: 292] [cite_start]<br>https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=7693&mi=2272&utm_source=chatgpt.com [cite: 293]</cite></p>
-            [cite_start]<p><cite>[18] [20] [46] 소비자분쟁해결기준 [cite: 294] [cite_start]<br>https://www.kca.go.kr/odr/pg/pi/osPgBjResolvW.do?utm_source=chatgpt.com [cite: 295]</cite></p>
-            [cite_start]<p><cite>[19] [56] 분쟁조정 결정 사례 [cite: 296] [cite_start]<br>https://www.kca.go.kr/odr/bj/br/osBjDecisionExamDetW.do?brdId=00000007&dataStts=Y&seq=1001158978&utm_source=chatgpt.com [cite: 297]</cite></p>
-            [cite_start]<p><cite>[22] [35] 추천·보증 등에 관한 표시·광고 심사지침 [cite: 298] [cite_start]<br>https://www.law.go.kr/admRulSc.do?menuId=5&query=%EC%B6%94%EC%B2%9C%C2%B7%EB%B3%B4%EC%A6%9D+%EB%93%B1%EC%97%90+%EA%B4%80%ED%95%9C+%ED%91%9C%EC%8B%9C%C2%B7%EA%B4%91%EA%B3%A0+%EC%8B%AC%EC%82%AC%EC%A7%80%EC%B9%A8&subMenuId=41&tabMenuId=183&utm_source=chatgpt.com [cite: 299]</cite></p>
-            [cite_start]<p><cite>[24] [27] 씨큐브코딩 송도국제 > 학원 소개 > 위치안내 [cite: 300] [cite_start]<br>https://www.creverse.com/coding/songdogukje/introduction/location?utm_source=chatgpt.com [cite: 301]</cite></p>
-            [cite_start]<p><cite>[26] 지점안내 [cite: 302] [cite_start]<br>https://www.daddyslab.com/dlab_town?utm_source=chatgpt.com [cite: 303]</cite></p>
-            [cite_start]<p><cite>[29] [33] [40] [44] [50] [55] https://www.scratchjr.org/about/faq [cite: 304] [cite_start][cite: 305]</cite></p>
-            [cite_start]<p><cite>[30] [31] [49] [54] https://www.tosspayments.com/about/fee [cite: 306] [cite_start][cite: 307]</cite></p>
-            [cite_start]<p><cite>[32] 입문자를 위한 생성형 AI 콘텐츠 기획 및 제작 [cite: 308] [cite_start]<br>https://www.kpc.or.kr/PTWED003_dtil_view.do?cclno=49050226&cono=152893&ecno=47547&utm_source=chatgpt.com [cite: 309]</cite></p>
-            [cite_start]<p><cite>[34] 산업/직무 특화 AI 에이전트 설계 과정 [cite: 310] [cite_start]<br>https://www.ks-academy.co.kr/course/course_view.jsp?cid=114176&id=194257&utm_source=chatgpt.com [cite: 311]</cite></p>
-            [cite_start]<p><cite>[36] https://spartacodingclub.kr/online/nocode_ai_automation [cite: 312] [cite_start][cite: 313]</cite></p>
-            [cite_start]<p><cite>[37] [39] https://www.data.go.kr/data/15053961/fileData.do?recommendDataYn=Y [cite: 314] [cite_start][cite: 315]</cite></p>
-            [cite_start]<p><cite>[38] [58] 소상공인365 [cite: 316] [cite_start]<br>https://bigdata.sbiz.or.kr/?utm_source=chatgpt.com [cite: 317]</cite></p>
-            [cite_start]<p><cite>[42] [45] https://makecode.com/blog/arcade/01-18-2019 [cite: 318] [cite_start][cite: 319]</cite></p>
-            [cite_start]<p><cite>[43] https://create.roblox.com/docs/studio/setup [cite: 320] [cite_start][cite: 321]</cite></p>
-            [cite_start]<p><cite>[51] https://developers.portone.io/opi/ko/integration/start/v1/auth?v=v1 [cite: 322] [cite_start][cite: 323]</cite></p>
-            [cite_start]<p><cite>[52] https://stripe.com/ie/global [cite: 324] [cite_start][cite: 325]</cite></p>
-            [cite_start]<p><cite>[53] https://stripe.com/atlas [cite: 326] [cite_start][cite: 327]</cite></p>
+            <hr style="border: 0; border-top: 1px solid var(--border); margin: 1.5rem 0;">
+
+            <div style="font-size:0.85rem; color:#64748b; line-height: 1.8;">
+                <p id="src-1">[1] [7] [8] 학원의 설립ㆍ운영 및 과외교습: https://easylaw.go.kr/CSP/CnpClsMain.laf...</p>
+                <p id="src-2">[2] https://www.ifez.go.kr/main/intro/stats/population.do</p>
+                <p id="src-3">[3] [21] [47] 경제적 이해관계 표시 안내서 개정본 배포: https://www.ftc.go.kr/www/selectBbsNttView.do...</p>
+                <p id="src-4">[4] https://www.ifez.go.kr/main/pst/view.do?pst_id=noti03&pst_sn=669134</p>
+                <p id="src-5">[5] [16] [17] 현금영수증∙신용카드 - 현금영수증발급의무: https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do...</p>
+                <p id="src-6">[6] [28] [59] [오프라인] 하루 19가지 실습으로 정복하는 AI 엑셀 업무 ...: https://fastcampus.co.kr/b2b_camp_excelautomation...</p>
+                <p id="src-9">[9] [41] https://scratch.mit.edu/help/studio/tips/howto/hoc-8/</p>
+                <p id="src-10">[10] https://www.law.go.kr/LSW/flDownload.do?flNm=...</p>
+                <p id="src-11">[11] 개인과외교습자 신고대상 - 인천광역시북부교육지원청: https://bukbu.ice.go.kr/ibuilder.do...</p>
+                <p id="src-12">[12] [25] https://www.goehs.kr/goehs/cm/cntnts/cntntsView.do?cntntsId=2275&mi=18473</p>
+                <p id="src-13">[13] [23] [48] [57] 국세정책/제도 - 사업자등록 안내: https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do...</p>
+                <p id="src-14">[14] https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do?cntntsId=7893&mi=6457</p>
+                <p id="src-15">[15] 개인신고안내 - 부가가치세 - 기본정보: https://www.nts.go.kr/nts/cm/cntnts/cntntsView.do...</p>
+                <p id="src-18">[18] [20] [46] 소비자분쟁해결기준: https://www.kca.go.kr/odr/pg/pi/osPgBjResolvW.do...</p>
+                <p id="src-19">[19] [56] 분쟁조정 결정 사례: https://www.kca.go.kr/odr/bj/br/osBjDecisionExamDetW.do...</p>
+                <p id="src-22">[22] [35] 추천·보증 등에 관한 표시·광고 심사지침: https://www.law.go.kr/admRulSc.do...</p>
+                <p id="src-24">[24] [27] 씨큐브코딩 송도국제 > 학원 소개 > 위치안내: https://www.creverse.com/coding/songdogukje/introduction/location...</p>
+                <p id="src-26">[26] 지점안내: https://www.daddyslab.com/dlab_town...</p>
+                <p id="src-29">[29] [33] [40] [44] [50] [55] https://www.scratchjr.org/about/faq</p>
+                <p id="src-30">[30] [31] [49] [54] https://www.tosspayments.com/about/fee</p>
+                <p id="src-32">[32] 입문자를 위한 생성형 AI 콘텐츠 기획 및 제작: https://www.kpc.or.kr/PTWED003_dtil_view.do...</p>
+                <p id="src-34">[34] 산업/직무 특화 AI 에이전트 설계 과정: https://www.ks-academy.co.kr/course/course_view.jsp...</p>
+                <p id="src-36">[36] https://spartacodingclub.kr/online/nocode_ai_automation</p>
+                <p id="src-37">[37] [39] https://www.data.go.kr/data/15053961/fileData.do...</p>
+                <p id="src-38">[38] [58] 소상공인365: https://bigdata.sbiz.or.kr/...</p>
+                <p id="src-42">[42] [45] https://makecode.com/blog/arcade/01-18-2019</p>
+                <p id="src-43">[43] https://create.roblox.com/docs/studio/setup</p>
+                <p id="src-51">[51] https://developers.portone.io/opi/ko/integration/start/v1/auth?v=v1</p>
+                <p id="src-52">[52] https://stripe.com/ie/global</p>
+                <p id="src-53">[53] https://stripe.com/atlas</p>
+            </div>
         </section>
     </main>
+
+    <script type="module">
+        import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@10/dist/mermaid.esm.min.mjs';
+        mermaid.initialize({ startOnLoad: true, theme: 'default' });
+    </script>
 </body>
 </html>
